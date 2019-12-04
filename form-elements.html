@@ -29,7 +29,7 @@
     <body>
 
         <div class="wrapper">
-            <form class="form-horizontal" action="form-elements.html" method="post">
+            <form class="form-horizontal" action="form-elements.html" method="post" data-parsley-validate>
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -48,7 +48,7 @@
                                         <div class="form-group row">
                                             <label for="lastname" class="col-sm-3 col-form-label text-right">نام خانوادگی</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="lastname" placeholder="نام خانوادگی">
+                                                <input type="text" class="form-control" id="lastname" placeholder="نام خانوادگی" required>
                                             </div>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
                                         <div class="form-group row">
                                             <label for="national-code" class="text-right col-sm-3 col-form-label">کد ملی</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="national-code" placeholder="کد ملی">
+                                                <input type="text" class="form-control" id="national-code" placeholder="کد ملی" required>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                         <div class="form-group row">
                                             <label for="birthday" class="col-sm-3 col-form-label text-right">تاریخ تولد</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="birthday" placeholder="تاریخ تولد">
+                                                <input type="text" class="form-control" id="birthday" placeholder="تاریخ تولد" required>
                                             </div>
                                         </div>
                                     </div>
@@ -74,8 +74,8 @@
                                         <div class="form-group row">
                                             <label for="civil_status" class="col-sm-3 col-form-label text-right">وضعیت تاهل</label>
                                             <div class="col-sm-9" style="padding-top:10px;">
-                                                <input type="radio" name="civil_status" style="position: relative;top:3px;margin:0 5px;">مجرد
-                                                <input type="radio" name="civil_status" style="position: relative;top:3px;margin: 0 10px 0 5px;">متاهل
+                                                <input type="radio" name="civil_status" style="position: relative;top:3px;margin:0 5px;" required>مجرد
+                                                <input type="radio" name="civil_status" style="position: relative;top:3px;margin: 0 10px 0 5px;" required>متاهل
                                             </div>
                                         </div>
                                     </div> 
@@ -92,7 +92,7 @@
                                         <div class="form-group row">
                                             <label for="mobile" class="text-right col-sm-3 col-form-label">موبایل</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="mobile" placeholder="موبایل">
+                                                <input type="text" class="form-control" id="mobile" placeholder="موبایل" required>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                                         <div class="form-group row">
                                             <label for="tel" class="col-sm-3 col-form-label text-right">تلفن ثابت</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="tel" placeholder="تلفن ثابت">
+                                                <input type="text" class="form-control" id="tel" placeholder="تلفن ثابت" required>
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +110,7 @@
                                         <div class="form-group row">
                                             <label for="email" class="text-right col-sm-3 col-form-label">ایمیل</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="email" placeholder="ایمیل">
+                                                <input type="email" class="form-control" id="email" placeholder="ایمیل" required>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                         <div class="form-group row">
                                             <label for="address" class="col-sm-3 col-form-label text-right">آدرس</label>
                                             <div class="col-sm-9">
-                                                <textarea name="textarea" class="form-control" id="address" placeholder="آدرس"></textarea>
+                                                <textarea name="textarea" class="form-control" id="address" placeholder="آدرس" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +135,8 @@
                                         <div class="form-group row">
                                             <label for="degree" class="text-right col-sm-4 col-form-label">مدرک تحصیلی</label>
                                             <div class="col-sm-8">
-                                                <select type="text" class="form-control" id="degree" placeholder="مدرک تحصیلی">
+                                                <select type="text" class="form-control" id="degree" placeholder="مدرک تحصیلی" required>
+                                                    <option value=""></option>
                                                     <option value="diploma">دیپلم</option>
                                                     <option value="graduate">لیسانس</option>
                                                     <option value="master">فوق لیسانس</option>
@@ -148,7 +149,7 @@
                                         <div class="form-group row">
                                             <label for="job" class="col-sm-4 col-form-label text-right">شغل</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="job" placeholder="شغل">
+                                                <input type="text" class="form-control" id="job" placeholder="شغل" required>
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +159,7 @@
                                         <div class="form-group row">
                                             <label for="experience" class="text-right col-sm-4 col-form-label">تجربه و تخصص</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="experience" placeholder="تجربه و تخصص">
+                                                <input type="text" class="form-control" id="experience" placeholder="تجربه و تخصص" required>
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +192,8 @@
                                 <h4 class="header-title mt-0 mb-3">معرف</h4>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <select id="refree-type" name="refree" class="form-control" id="">
+                                        <select id="refree-type" name="refree" class="form-control" id="" required>
+                                            <option value=""></option>
                                             <option value="telegram">تلگرام</option>
                                             <option value="instagram">اینستاگرام</option>
                                             <option value="website">وب سایت</option>
@@ -202,7 +204,7 @@
                                         <div class="form-group row">
                                             <label for="refree-name" class="text-right col-sm-4 col-form-label">نام معرف</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="refree-name" placeholder="نام معرف">
+                                                <input type="text" class="form-control" id="refree-name" placeholder="نام معرف" required>
                                             </div>
                                         </div>        
                                     </div>
@@ -214,7 +216,7 @@
                         <div class="col-md-6">
                             <div class="card-box">
                                 <h4 class="header-title mt-0 mb-3">عکس</h4>
-                                <input type="file" class="dropify" data-max-file-size="1M" />
+                                <input type="file" class="dropify" data-max-file-size="1M" required />
                                 <span style="font-size: 11px;">حداکثر حجم عکس 1 مگابیات</span><br>
                                 <span style="font-size: 11px;">عکس تمام رخ باشد</span>
                             </div>
@@ -222,7 +224,7 @@
                         <div class="col-md-6">
                             <div class="card-box">
                                 <h4 class="header-title mt-0 mb-3">تصویر کارت ملی</h4>
-                                <input type="file" class="dropify" data-max-file-size="1M" />
+                                <input type="file" class="dropify" data-max-file-size="1M" required />
                                 <span style="font-size: 11px;">حداکثر حجم عکس 1 مگابیات</span><br>
                                 <span style="font-size: 11px;">تصویر کارت ملی واضح باشد</span>
                             </div>
@@ -265,6 +267,8 @@
         <script src="assets/js/dropify.min.js"></script>
         <script src="assets/js/kamadatepicker.min.js"></script>
         <script src="assets/js/app.min.js"></script>
+        <script src="assets/js/parsley.min.js"></script>
+        <script src="assets/js/i18n/fa.js"></script>
         <script>
         $( document ).ready(function() {
             kamaDatepicker('birthday');
@@ -285,6 +289,7 @@
                     $("#refree-field").show();
                 }
             })
+            $('form').parsley();
         });
         </script>
                 
