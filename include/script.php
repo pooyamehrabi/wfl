@@ -1,6 +1,4 @@
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
-
+        
         <!-- Vendor js -->
         <script src="/crm/assets/js/vendor.min.js"></script>
         <script src="/crm/assets/js/dropify.min.js"></script>
