@@ -43,11 +43,12 @@
                     <div class="col-md-12">
                         <div class="card-box">
 
-                            <button class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".login-signup-form">ورود / ثبت نام</button>
+                            <button class="btn btn-green waves-effect waves-light" data-toggle="modal" data-target=".login-signup-form">ورود / ثبت نام</button>
 
                             <div class="modal fade login-signup-form" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute;top: 1px;right: 5px;color: #20505e;font-size: 27px;">×</button>
                                         <ul class="nav nav-tabs nav-justified">
                                             <li class="nav-item">
                                                 <a href="#login" data-toggle="tab" aria-expanded="false" class="nav-link active">
@@ -64,126 +65,83 @@
                                         </ul>
     
                                         <div class="tab-content">
+
                                             <div role="tabpanel" class="tab-pane fade show active" id="login">
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="col-12">
-                                                            <div class="text-center">
-                                                                <a href="index.html">
-                                                                    <span><img src="../assets/images/logo-dark.png" alt="" height="60"></span>
-                                                                </a>
-                                                                <p class="text-muted mt-2 mb-4">مدرسه موفقیت</p>
-                                                            </div>
-                                                            <div class="card">
-                                    
-                                                                <div class="card-body p-4">
-                                                                    
-                                                                    <div class="text-center mb-4">
-                                                                        <h4 class="text-uppercase mt-0">ورود</h4>
-                                                                    </div>
-                                    
-                                                                    <form action="#">
-                                    
-                                                                        <div class="form-group mb-3">
-                                                                            <label for="emailaddress">نام کاربری یا ایمیل</label>
-                                                                            <input class="form-control" type="email" name="email" id="emailaddress" required>
-                                                                        </div>
-                                    
-                                                                        <div class="form-group mb-3">
-                                                                            <label for="password">رمز ورود</label>
-                                                                            <input class="form-control" type="password" name="password" id="password" required>
-                                                                        </div>
-                                    
-                                                                        <div class="form-group mb-0 text-center">
-                                                                            <button class="btn btn-primary btn-block" type="submit"> ورود </button>
-                                                                        </div>
-                                    
-                                                                    </form>
-                                    
-                                                                </div> <!-- end card-body -->
-                                                            </div>
-                                                            <!-- end card -->
+                                                            <form action="#">
+                                                                <div class="form-group mb-3">
+                                                                    <label for="emailaddress">نام کاربری یا ایمیل</label>
+                                                                    <input class="form-control" type="email" name="email" id="emailaddress" required>
+                                                                </div>
+                                                                <div class="form-group mb-3">
+                                                                    <label for="password">رمز ورود</label>
+                                                                    <input class="form-control" type="password" name="password" id="password" required>
+                                                                </div>
+                                                                <div class="form-group mb-0 text-center">
+                                                                    <button class="btn btn-green btn-block" type="submit"> ورود </button>
+                                                                </div>
+                                                            </form>
                                     
                                                             <div class="row mt-3">
                                                                 <div class="col-12 text-center" style="margin-top: 30px;">
-                                                                    <p> <a href="pages-recoverpw.html" class="text-muted ml-1"><i class="fa fa-lock mr-1"></i>رمز خود را فراموش کرده اید؟</a></p>
-                                                                    <p class="text-muted">اکانت ندارید؟ <a href="pages-register.html" class="text-dark ml-1"><b>ثبت نام</b></a></p>
+                                                                    <p> <a href="recoverpw.html" class="text-muted ml-1"><i class="fa fa-lock mr-1"></i>رمز خود را فراموش کرده اید؟</a></p>
+                                                                    <p class="text-muted">اکانت ندارید؟ <a href="#register" data-toggle="tab" aria-expanded="false" class="remove-active text-dark ml-1"><b>ثبت نام</b></a></p>
                                                                 </div> <!-- end col -->
                                                             </div>
-                                                            <!-- end row -->
-                                    
+                                                            <!-- end row -->                                    
                                                         </div> <!-- end col -->
                                                     </div>
                                                     <!-- end row -->
                                                 </div>
                                             </div>
+
                                             <div role="tabpanel" class="tab-pane fade" id="register">
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="col-12">
-                                                            <div class="text-center">
-                                                                <a href="index.html">
-                                                                    <span><img src="../assets/images/logo-dark.png" alt="" height="60"></span>
-                                                                </a>
-                                                                <p class="text-muted mt-2 mb-4">مدرسه موفقیت</p>
-                                                            </div>
-                                                            <div class="card">
-                                    
-                                                                <div class="card-body p-4">
-                                                                    
-                                                                    <div class="text-center mb-4">
-                                                                        <h4 class="text-uppercase mt-0">ثبت نام</h4>
+                                                            <form action="#">
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6">
+                                                                        <label for="fullname">نام</label>
+                                                                        <input class="form-control" type="text" name="firstname" required>
                                                                     </div>
-                                    
-                                                                    <form action="#">
-                                    
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-6">
-                                                                                <label for="fullname">نام</label>
-                                                                                <input class="form-control" type="text" name="firstname" required>
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                <label for="fullname">نام خانوادگی</label>
-                                                                                <input class="form-control" type="text" name="lastname" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-6">
-                                                                                <label>موبایل</label>
-                                                                                <input class="form-control" type="email" name="mobile" required>
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                <label for="emailaddress">ایمیل</label>
-                                                                                <input class="form-control" type="email" name="email" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-sm-6">
-                                                                                <label for="password">رمز</label>
-                                                                                <input class="form-control" type="password" name="password" required>
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                <label for="password">تکرار رمز</label>
-                                                                                <input class="form-control" type="password" name="password-repeat" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group mb-0 text-center">
-                                                                            <button class="btn btn-primary btn-block" type="submit">ثبت نام</button>
-                                                                        </div>
-                                    
-                                                                    </form>
-                                    
-                                                                </div> <!-- end card-body -->
-                                                            </div>
-                                                            <!-- end card -->
-                                    
+                                                                    <div class="col-sm-6">
+                                                                        <label for="fullname">نام خانوادگی</label>
+                                                                        <input class="form-control" type="text" name="lastname" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6">
+                                                                        <label>موبایل</label>
+                                                                        <input class="form-control" type="email" name="mobile" required>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label for="emailaddress">ایمیل</label>
+                                                                        <input class="form-control" type="email" name="email" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-6">
+                                                                        <label for="password">رمز</label>
+                                                                        <input class="form-control" type="password" name="password" required>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label for="password">تکرار رمز</label>
+                                                                        <input class="form-control" type="password" name="password-repeat" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group mb-0 text-center">
+                                                                    <button class="btn btn-green btn-block" type="submit">ثبت نام</button>
+                                                                </div>
+                                                            </form>
                                                             <div class="row mt-3">
                                                                 <div class="col-12 text-center">
-                                                                    <p class="text-muted">عضو هستید؟ <a href="login.html" class="text-dark ml-1"><b>ورود</b></a></p>
+                                                                    <p class="text-muted">عضو هستید؟ <a href="#login" data-toggle="tab" aria-expanded="true" class="remove-active text-dark ml-1"><b>ورود</b></a></p>
                                                                 </div> <!-- end col -->
                                                             </div>
                                                             <!-- end row -->
-                                    
                                                         </div> <!-- end col -->
                                                     </div>
                                                     <!-- end row -->
@@ -194,29 +152,13 @@
                                 </div><!-- /.modal-dialog -->
                             </div><!-- /.modal -->
 
-
                         </div>
                     </div>
                 </div>
 
-
-
             </div> <!-- end container -->
         </div>
         <!-- end wrapper -->
-
-        <!-- Modal -->
-        <div id="custom-modal" class="modal-demo">
-                <button type="button" class="close" onclick="Custombox.modal.close();">
-                    <span>&times;</span><span class="sr-only">Close</span>
-                </button>
-                <h4 class="custom-modal-title">Modal title</h4>
-                <div class="custom-modal-text">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
-            </div>
-        </div>
-
 
         <!-- ============================================================== -->
         <!-- End Page content -->
@@ -241,106 +183,6 @@
         </footer>
         <!-- end Footer -->
 
-        <!-- Right Sidebar -->
-        <div class="right-bar">
-            <div class="rightbar-title">
-                <a href="javascript:void(0);" class="right-bar-toggle float-right">
-                    <i class="dripicons-cross noti-icon"></i>
-                </a>
-                <h4 class="m-0 text-white">Settings</h4>
-            </div>
-            <div class="slimscroll-menu rightbar-content">
-                <!-- User box -->
-                <div class="user-box">
-                    <div class="user-img">
-                        <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-fluid">
-                        <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
-                    </div>
-            
-                    <h5><a href="javascript: void(0);">Nowak Helme</a> </h5>
-                    <p class="text-muted mb-0"><small>Admin Head</small></p>
-                </div>
-
-                <!-- Settings -->
-                <hr class="mt-0" />
-                <h5 class="pl-3">Basic Settings</h5>
-                <hr class="mb-0" />
-
-                <div class="p-3">
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="Rcheckbox1" type="checkbox" checked>
-                        <label for="Rcheckbox1">
-                            Notifications
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="Rcheckbox2" type="checkbox" checked>
-                        <label for="Rcheckbox2">
-                            API Access
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="Rcheckbox3" type="checkbox">
-                        <label for="Rcheckbox3">
-                            Auto Updates
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-2">
-                        <input id="Rcheckbox4" type="checkbox" checked>
-                        <label for="Rcheckbox4">
-                            Online Status
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-primary mb-0">
-                        <input id="Rcheckbox5" type="checkbox" checked>
-                        <label for="Rcheckbox5">
-                            Auto Payout
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Timeline -->
-                <hr class="mt-0" />
-                <h5 class="pl-3 pr-3">Messages <span class="float-right badge badge-pill badge-danger">25</span></h5>
-                <hr class="mb-0" />
-                <div class="p-3">
-                    <div class="inbox-widget">
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets/images/users/user-2.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Tomaslau</a></p>
-                            <p class="inbox-item-text">I've finished it! See you so...</p>
-                        </div>
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets/images/users/user-3.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Stillnotdavid</a></p>
-                            <p class="inbox-item-text">This theme is awesome!</p>
-                        </div>
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets/images/users/user-4.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Kurafire</a></p>
-                            <p class="inbox-item-text">Nice to meet you</p>
-                        </div>
-
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets/images/users/user-5.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Shahedk</a></p>
-                            <p class="inbox-item-text">Hey! there I'm available...</p>
-                        </div>
-                        <div class="inbox-item">
-                            <div class="inbox-item-img"><img src="assets/images/users/user-6.jpg" class="rounded-circle" alt=""></div>
-                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Adhamdannaway</a></p>
-                            <p class="inbox-item-text">This theme is awesome!</p>
-                        </div>
-                    </div> <!-- end inbox-widget -->
-                </div> <!-- end .p-3-->
-
-            </div> <!-- end slimscroll-menu-->
-        </div>
-        <!-- /Right-bar -->
-
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
-
         <!-- Vendor js -->
         <script src="../assets/js/vendor.min.js"></script>
 
@@ -349,6 +191,13 @@
 
         <!-- App js-->
         <script src="../assets/js/app.min.js"></script>
+
+        <script>
+        $('.remove-active').click(function(){
+            $(".remove-active").removeClass("active");
+            $(".modal-content .nav-link").toggleClass("active");
+        })
+        </script>
         
     </body>
 </html>
