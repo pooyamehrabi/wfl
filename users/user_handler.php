@@ -1,5 +1,7 @@
 <?php
-$conn = new mysqli('localhost', 'root', '', 'crm');
+require_once("../config.php");
+
+$conn = new mysqli($server, $username, $password, $database);
 $nid = $_POST['national-code'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];

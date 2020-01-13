@@ -7,7 +7,7 @@
 
 $server   = "localhost";
 $username = "root";
-$password = "";
+$password = "rootpass";
 $database = "crm";
 
 $assets_url = "/crm/assets";

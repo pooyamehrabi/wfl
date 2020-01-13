@@ -1,11 +1,13 @@
 <?php
-$conn = new mysqli('localhost', 'root', '', 'crm');
-$query = "SELECT * from users;";
+require_once("../config.php");
+
+$conn = new mysqli($server, $username, $password, $database);
+$query = "SELECT * FROM users;";
 $result = $conn->query($query);
 $output = '' ;
 
 if ($result->num_rows > 0) {
-    $output = '<table id="datatable" class="table table-bordered dt-responsive nowrap"><thead>';
+    $output  = '<table id="datatable" class="table table-bordered dt-responsive nowrap"><thead>';
     $output .= "<th>کد ملی</th>";
     $output .= "<th>نام</th>";
     $output .= "<th> نام خانوادگی</th>";
@@ -26,7 +28,7 @@ if ($result->num_rows > 0) {
     $output .= "<th>عکس</th>";
     $output .= "<th>عکس کارت ملی</th>";
     $output .= "</thead>";
-while($row = $result->fetch_assoc()){
+    while($row = $result->fetch_assoc()){
         $output .= "<tr>";
         $output .= "<td>" . $row["NID"] . "</td>";
         $output .= "<td>" . $row["firstname"] . "</td>";

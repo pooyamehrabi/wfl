@@ -80,7 +80,7 @@ $page_title = 'عضویت در مدرسه موفقیت';
                                         <div class="form-group row">
                                             <label for="tel" class="col-sm-3 col-form-label text-right">تلفن ثابت</label>
                                             <div class="col-sm-9">
-                                                <input type="tel" name="phone" pattern="[0-9]" class="form-control" placeholder="021xxxxxxxx" >
+                                                <input type="tel" name="phone" class="form-control" placeholder="021xxxxxxxx" >
                                             </div>
                                         </div>
                                     </div>
@@ -220,7 +220,7 @@ $page_title = 'عضویت در مدرسه موفقیت';
                         </div><!-- end col -->
                     </div>
                 </div> <!-- end container -->
-                <div class="form-group mb-0 justify-content-end row">
+                <div class="form-group mb-3 justify-content-end row">
                     <div class="col-sm-12 text-center">
                         <button type="submit" value="submit" class="btn btn-info waves-effect waves-light">ثبت نام</button>
                     </div>
