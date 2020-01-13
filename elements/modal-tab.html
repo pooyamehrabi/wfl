@@ -43,7 +43,7 @@
                     <div class="col-md-12">
                         <div class="card-box">
 
-                            <button class="btn btn-green waves-effect waves-light" data-toggle="modal" data-target=".login-signup-form">ورود / ثبت نام</button>
+                            <button id="show-reg-form" class="btn btn-green waves-effect waves-light" data-toggle="modal" data-target=".login-signup-form">ورود / ثبت نام</button>
 
                             <div class="modal fade login-signup-form" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -70,7 +70,7 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="col-12">
-                                                            <form action="#">
+                                                            <form id="login-form" action="#">
                                                                 <div class="form-group mb-3">
                                                                     <label for="emailaddress">نام کاربری یا ایمیل</label>
                                                                     <input class="form-control" type="email" name="email" id="emailaddress" required>
@@ -101,7 +101,7 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="col-12">
-                                                            <form action="#">
+                                                            <form id="reg-form" action="#">
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-6">
                                                                         <label for="firstname">نام</label>
