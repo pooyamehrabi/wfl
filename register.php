@@ -1,3 +1,28 @@
+<?php
+require_once("config.php");
+if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
+    $conn = new mysqli($server, $username, $password, $database);
+    
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $mobile = $_POST['mobile'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $query = "INSERT INTO users (firstname, lastname, mobile, email, password)
+                        VALUES ('$firstname', '$lastname', '$mobile', '$email', '$password');";
+    var_dump($query);
+
+    if ($conn->query($query) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
