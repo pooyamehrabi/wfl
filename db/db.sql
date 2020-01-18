@@ -38,17 +38,21 @@ CREATE TABLE IF NOT EXISTS `courses` (
 -- Dumping structure for table crm.users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `NID` varchar(10) NOT NULL DEFAULT '',
-  `username` varchar(50) DEFAULT '',
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NID` varchar(10) DEFAULT '',
+  `wp_username` varchar(40) DEFAULT '',
+  `username` varchar(40) DEFAULT '',
   `password` varchar(40) DEFAULT '',
-  `type` varchar(10) DEFAULT 'user',
+  `type` varchar(10) DEFAULT 'student',
   `firstname` varchar(20) DEFAULT '',
   `lastname` varchar(30) DEFAULT '',
   `birthday` varchar(30) DEFAULT '',
   `civil_status` varchar(10) DEFAULT '',
   `mobile` varchar(20) DEFAULT '',
+  `mobile_verfied` tinyint(1) DEFAULT '0',
   `phone` varchar(20) DEFAULT '',
   `email` varchar(50) DEFAULT '',
+  `email_verfied` tinyint(1) DEFAULT '0',
   `family_phone` varchar(20) DEFAULT '',
   `address` varchar(200) DEFAULT '',
   `degree` varchar(10) DEFAULT '',
@@ -60,12 +64,34 @@ CREATE TABLE IF NOT EXISTS `users` (
   `refree_name` varchar(20) DEFAULT '',
   `picture` varchar(20) DEFAULT '',
   `national_card` varchar(20) DEFAULT '',
-  PRIMARY KEY (`NID`)
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `mobile` (`mobile`),
+  UNIQUE KEY `email` (`email`),
+  KEY `NID` (`NID`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table crm.users: 1 rows
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`user_id`, `NID`, `wp_username`, `username`, `password`, `type`, `firstname`, `lastname`, `birthday`, `civil_status`, `mobile`, `mobile_verfied`, `phone`, `email`, `email_verfied`, `family_phone`, `address`, `degree`, `study_field`, `job_title`, `experience`, `about`, `refree`, `refree_name`, `picture`, `national_card`) VALUES
+	(6, '', '', 'pooya', '1234', 'student', 'Ù¾ÙˆÛŒØ§', 'Ù…Ø­Ø±Ø§Ø¨ÛŒ', '', '', '09122147996', NULL, '', 'mehrabi.pooya@gmail.com', NULL, '', '', '', '', '', '', '', '', '', '', '');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table crm.users_courses
+DROP TABLE IF EXISTS `users_courses`;
+CREATE TABLE IF NOT EXISTS `users_courses` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL DEFAULT '0',
+  `course_id` int(10) unsigned NOT NULL,
+  `fee` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `course_id` (`course_id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table crm.users: 0 rows
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+-- Dumping data for table crm.users_courses: 0 rows
+/*!40000 ALTER TABLE `users_courses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users_courses` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
