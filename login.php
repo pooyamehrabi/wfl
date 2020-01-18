@@ -1,3 +1,11 @@
+<?php
+if(isset($_REQUEST["message"]) && $_REQUEST["message"] == "success") {
+    $success_message = "<div class='alert alert-success text-center mt-3'>
+        حساب کاربری شما با موفقیت ایجاد شد.
+        </div>";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,8 +37,9 @@
                             <a href="index.html">
                                 <span><img src="assets/images/logo-dark.png" alt="" height="60"></span>
                             </a>
-                            <p class="text-muted mt-2 mb-4">مدرسه موفقیت</p>
                         </div>
+                        <?php echo $success_message; ?>
+
                         <div class="card">
 
                             <div class="card-body p-4">
