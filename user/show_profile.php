@@ -121,7 +121,7 @@ $user = $result->fetch_assoc();
                     </div>
 
                     <div class="col-12 col-sm-9 content">
-                        <div class="card-box" style="height:1500px;">
+                        <div class="card-box">
                             <h4 class="header-title mt-0 mb-2wqqq">مشخصات</h4>
                                 <div class="row">
                                     <div class="col-6 col-sm-4 my-1"><strong>کد ملی:</strong> <?php echo $user["NID"]; ?></div>
