@@ -138,12 +138,28 @@ $result = $conn->query($query);
                             <ul class="list-group mb-0 user-list">
                                 <li class="list-group-item">
                                     <a href="#" class="user-list-item">
-                                        <div class="user avatar-sm float-left mr-2">
-                                            <img src="assets/images/users/user-2.jpg" alt="" class="img-fluid rounded-circle">
-                                        </div>
                                         <div class="user-desc">
-                                            <h5 class="name mt-0 mb-1">Michael Zenaty</h5>
-                                            <p class="desc text-muted mb-0 font-12">CEO</p>
+                                            <div>
+                                                کد ملی<br>
+                                                نام<br>
+                                                نام خانوادگی<br>
+                                                تاریخ تولد<br>
+                                                وضعیت تاهل<br>
+                                                موبایل<br>
+                                                تلفن<br>
+                                                ایمیل<br>
+                                                تماس اضطراری<br>
+                                                آدرس<br>
+                                                مدرک<br>
+                                                رشته تحصیلی<br>
+                                                شغل<br>
+                                                تجربه تخصص<br>
+                                                درباره خود<br>
+                                                معرف<br>
+                                                نام معرف<br>
+                                                عکس<br>
+                                                عکس کارت ملی
+                                            </div>
                                         </div>
                                     </a>
                                 </li>
