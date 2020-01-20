@@ -1,4 +1,5 @@
 <?php
+$success_message = '';
 if(isset($_REQUEST["message"]) && $_REQUEST["message"] == "success") {
     $success_message = "<div class='alert alert-success text-center mt-3'>
         حساب کاربری شما با موفقیت ایجاد شد.

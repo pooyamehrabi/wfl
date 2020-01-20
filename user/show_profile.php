@@ -1,63 +1,17 @@
 <?php
 require_once("../config.php");
 
-$conn = new mysqli($server, $username, $password, $database);
+$conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 $query = "SELECT * FROM users;";
 $result = $conn->query($query);
-$output = '' ;
-
-if ($result->num_rows > 0) {
-    $output  = '<table id="datatable" class="table table-bordered dt-responsive nowrap"><thead>';
-    $output .= "<th>کد ملی</th>";
-    $output .= "<th>نام</th>";
-    $output .= "<th> نام خانوادگی</th>";
-    $output .= "<th>تاریخ تولد</th>";
-    $output .= "<th>وضعیت تاهل</th>";
-    $output .= "<th>موبایل</th>";
-    $output .= "<th>تلفن</th>";
-    $output .= "<th>ایمیل</th>";
-    $output .= "<th>تماس اضطراری</th>";
-    $output .= "<th>آدرس</th>";
-    $output .= "<th>مدرک</th>";
-    $output .= "<th>رشته تحصیلی</th>";
-    $output .= "<th>شغل</th>";
-    $output .= "<th>تجربه تخصص</th>";
-    $output .= "<th>درباره خود</th>";
-    $output .= "<th>معرف</th>";
-    $output .= "<th>نام معرف</th>";
-    $output .= "<th>عکس</th>";
-    $output .= "<th>عکس کارت ملی</th>";
-    $output .= "</thead>";
-    while($row = $result->fetch_assoc()){
-        $output .= "<tr>";
-        $output .= "<td>" . $row["NID"] . "</td>";
-        $output .= "<td>" . $row["firstname"] . "</td>";
-        $output .= "<td>" . $row["lastname"] . "</td>";
-        $output .= "<td>" . $row["birthday"] . "</td>";
-        $output .= "<td>" . $row["civil_status"] . "</td>";
-        $output .= "<td>" . $row["mobile"] . "</td>";
-        $output .= "<td>" . $row["phone"] . "</td>";
-        $output .= "<td>" . $row["email"] . "</td>";
-        $output .= "<td>" . $row["family_phone"] . "</td>";
-        $output .= "<td>" . $row["address"] . "</td>";
-        $output .= "<td>" . $row["degree"] . "</td>";
-        $output .= "<td>" . $row["study_field"] . "</td>";
-        $output .= "<td>" . $row["job_title"] . "</td>";
-        $output .= "<td>" . $row["experience"] . "</td>";
-        $output .= "<td>" . $row["about"] . "</td>";
-        $output .= "<td>" . $row["refree"] . "</td>";
-        $output .= "<td>" . $row["refree_name"] . "</td>";
-        $output .= "<td>" . $row["picture"] . "</td>";
-        $output .= "<td>" . $row["national_card"] . "</td>";
-        $output .= "</tr>";
-    }
-    $output .= "</table>";
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once "../include/head.php" ; ?>
+    <head>
+    <?php include_once "../include/head.php" ; ?>
+    
+    </head>
 
     <body>
 
@@ -100,14 +54,14 @@ if ($result->num_rows > 0) {
     
                     <!-- LOGO -->
                     <div class="logo-box">
-                        <a href="index.html" class="logo text-center">
+                        <a href="<?php echo $crmbase_url; ?>" class="logo text-center">
                             <span class="logo-lg">
-                                <img src="assets/images/logo-light.png" alt="" height="16">
+                                <img src="../assets/images/logo-light.png" alt="" height="40">
                                 <!-- <span class="logo-lg-text-light">UBold</span> -->
                             </span>
                             <span class="logo-sm">
                                 <!-- <span class="logo-sm-text-dark">U</span> -->
-                                <img src="assets/images/logo-sm.png" alt="" height="24">
+                                <img src="../assets/images/logo-sm.png" alt="" height="24">
                             </span>
                         </a>
                     </div>
@@ -123,7 +77,7 @@ if ($result->num_rows > 0) {
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="index.html"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
+                                <a href="index.html"><i class="mdi mdi-view-dashboard"></i>کاربران</a>
                             </li>
 
                         </ul>
@@ -150,20 +104,59 @@ if ($result->num_rows > 0) {
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Datatables</h4>
+                            <h4 class="page-title my-3">نام</h4>
                         </div>
                     </div>
                 </div>     
-                <!-- end page title --> 
 
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card-box">
-                            <?php echo $output; ?>
+                    <div class="col-sm-3">
+                        <div class="bg-picture card-box">
+                            <div class="profile-info-name text-center">
+                                <div class="text-center">
+                                    <img src="../assets/images/profile.jpg" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
+                                    <h4 class="m-0">نوید </h4>
+                                </div>
+
+                                <div class="mt-2">
+                                    <div><a href="">پروفایل</a></div>
+                                    <div><a href="">دوره ها</a></div>
+                                    <div><a href="">مالی</a></div>
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
+                        <!--/ meta -->
                     </div>
-                </div> <!-- end row -->
+
+                    <div class="col-sm-9">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3">مشخصات</h4>
+
+                            <ul class="list-group mb-0 user-list">
+                                <li class="list-group-item">
+                                    <a href="#" class="user-list-item">
+                                        <div class="user avatar-sm float-left mr-2">
+                                            <img src="assets/images/users/user-2.jpg" alt="" class="img-fluid rounded-circle">
+                                        </div>
+                                        <div class="user-desc">
+                                            <h5 class="name mt-0 mb-1">Michael Zenaty</h5>
+                                            <p class="desc text-muted mb-0 font-12">CEO</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3"><i class="mdi mdi-notification-clear-all mr-1"></i>توضیحات</h4>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end row -->
 
             </div> <!-- end container -->
         </div>
@@ -289,14 +282,14 @@ if ($result->num_rows > 0) {
         </div>
         <!-- /Right-bar -->
 
-        <?php include_once "../include/script.php" ; ?>
-        <script>
-        $(document).ready(function () {
-            $("#datatable").DataTable({
-                "scrollX": true
-            });
-        });
-        </script>
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- Vendor js -->
+        <script src="assets/js/vendor.min.js"></script>
+
+        <!-- App js-->
+        <script src="assets/js/app.min.js"></script>
         
     </body>
-</html>                            
+</html>

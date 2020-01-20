@@ -68,21 +68,21 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
                                                 <div class="form-group row">
                                                     <div class="col-sm-6">
                                                         <label for="firstname">نام</label>
-                                                        <input class="form-control" type="text" name="firstname" id="firstname" value="<?php echo $_REQUEST["firstname"]; ?>" required>
+                                                        <input class="form-control" type="text" name="firstname" id="firstname" value="<?php if(isset($_REQUEST["firstname"])) echo $_REQUEST["firstname"]; ?>" required>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <label for="lastname">نام خانوادگی</label>
-                                                        <input class="form-control" type="text" name="lastname" id="lastname" value="<?php echo $_REQUEST["lastname"]; ?>" required>
+                                                        <input class="form-control" type="text" name="lastname" id="lastname" value="<?php if(isset($_REQUEST["lastname"])) echo $_REQUEST["lastname"]; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-6">
                                                         <label for="mobile">موبایل</label>
-                                                        <input class="form-control" type="tel" name="mobile" id="mobile" value="<?php echo $_REQUEST["mobile"]; ?>" required>
+                                                        <input class="form-control" type="tel" name="mobile" id="mobile" value="<?php if(isset($_REQUEST["mobile"])) echo $_REQUEST["mobile"]; ?>" required>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <label for="email">ایمیل</label>
-                                                        <input class="form-control" type="email" name="email" id="email" value="<?php echo $_REQUEST["email"]; ?>" required>
+                                                        <input class="form-control" type="email" name="email" id="email" value="<?php if(isset($_REQUEST["email"])) echo $_REQUEST["email"]; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -110,7 +110,7 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <p class="text-muted">عضو هستید؟ <a href="login.html" class="text-dark ml-1"><b>ورود</b></a></p>
+                                <p class="text-muted">عضو هستید؟ <a href="login.php" class="text-dark ml-1"><b>ورود</b></a></p>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->

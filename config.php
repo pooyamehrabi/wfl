@@ -4,5 +4,6 @@ $db_username = "root";
 $db_password = "rootpass";
 $db_database = "crm";
 
-$assets_url = "/crm/assets";
+$crmbase_url = "/crm/";
+$assets_url  = "/crm/assets";
 
