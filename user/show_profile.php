@@ -11,6 +11,11 @@ $user = $result->fetch_assoc();
 <html lang="en">
     <head>
     <?php include_once "../include/head.php" ; ?>
+    <style>
+    .profile-info-name:hover .edit-profile-image {
+        display: block!important;
+    }
+    </style>
     
     </head>
 
@@ -97,7 +102,8 @@ $user = $result->fetch_assoc();
                         <div class="sidebar__inner">
                             <div class="bg-picture card-box">
                                 <div class="profile-info-name text-center">
-                                    <div class="text-center">
+                                    <div class="text-center" style="position: relative;">
+                                        <div class="edit-profile-image" style="display:none;position: absolute;right: 50%;transform: translateX(50%);top: 30%;"><i class="fas fa-edit font-20"></i></div>
                                         <img src="../assets/images/profile-placeholder.png" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
                                         <h4 class="m-0">نوید </h4>
                                     </div>
@@ -106,7 +112,6 @@ $user = $result->fetch_assoc();
                                         <div><a href="">پروفایل</a></div>
                                         <div><a href="">دوره ها</a></div>
                                         <div><a href="">مالی</a></div>
-
                                     </div>
 
                                     <div class="clearfix"></div>
@@ -116,27 +121,26 @@ $user = $result->fetch_assoc();
                     </div>
 
                     <div class="col-sm-9 content">
-                        <div class="card-box" style="height:1500px;">
-                            <h4 class="header-title mt-0 mb-3">مشخصات</h4>
-
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-2wqqq">مشخصات</h4>
                                 <div class="row">
-                                    <div class="col-6 col-sm-4 my-2"><strong>کد ملی:</strong> <?php echo $user["NID"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>نام:</strong> <?php echo $user["firstname"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>نام خانوادگی:</strong> <?php echo $user["lastname"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>تاریخ تولد:</strong> <?php echo $user["birthday"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>وضعیت تاهل:</strong> <?php echo $user["civil_status"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>موبایل:</strong> <?php echo $user["mobile"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>تلفن:</strong> <?php echo $user["phone"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>ایمیل:</strong> <?php echo $user["email"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>تماس اضطراری:</strong> <?php echo $user["family_phone"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>آدرس:</strong> <?php echo $user["address"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>مدرک:</strong> <?php echo $user["degree"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>رشته تحصیلی:</strong> <?php echo $user["study_field"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>شغل:</strong> <?php echo $user["job_title"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>تجربه تخصص:</strong> <?php echo $user["experience"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>معرف:</strong> <?php echo $user["refree"]; ?></div>
-                                    <div class="col-6 col-sm-4 my-2"><strong>نام معرف:</strong> <?php echo $user["refree_name"]; ?></div>
-                                    <div class="col-12 col-sm-12 my-2"><strong>درباره خود:</strong> <?php echo $user["about"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>کد ملی:</strong> <?php echo $user["NID"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>نام:</strong> <?php echo $user["firstname"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>نام خانوادگی:</strong> <?php echo $user["lastname"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>تاریخ تولد:</strong> <?php echo $user["birthday"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>وضعیت تاهل:</strong> <?php echo $user["civil_status"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>موبایل:</strong> <?php echo $user["mobile"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>تلفن:</strong> <?php echo $user["phone"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>ایمیل:</strong> <?php echo $user["email"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>تماس اضطراری:</strong> <?php echo $user["family_phone"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>آدرس:</strong> <?php echo $user["address"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>مدرک:</strong> <?php echo $user["degree"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>رشته تحصیلی:</strong> <?php echo $user["study_field"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>شغل:</strong> <?php echo $user["job_title"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>تجربه تخصص:</strong> <?php echo $user["experience"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>معرف:</strong> <?php echo $user["refree"]; ?></div>
+                                    <div class="col-6 col-sm-4 my-1"><strong>نام معرف:</strong> <?php echo $user["refree_name"]; ?></div>
+                                    <div class="col-12 col-sm-12 my-1"><strong>درباره خود:</strong> <?php echo $user["about"]; ?></div>
                                 </div>
                         </div>
 
