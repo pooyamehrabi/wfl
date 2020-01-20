@@ -5,6 +5,7 @@
         <script src="/crm/assets/js/kamadatepicker.min.js"></script>
         <script src="/crm/assets/js/parsley.min.js"></script>
         <script src="/crm/assets/js/i18n/fa.js"></script>
+        <script src="/crm/assets/js/sticky-sidebar.min.js"></script>
         <script src="/crm/assets/libs/tinymce/tinymce.min.js"></script>
 
         <!-- third party js -->
