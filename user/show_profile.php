@@ -98,7 +98,7 @@ $user = $result->fetch_assoc();
                 </div>     
 
                 <div class="row main-content">
-                    <div class="col-sm-3 sidebar">
+                    <div class="col-12 col-sm-3 sidebar">
                         <div class="sidebar__inner">
                             <div class="bg-picture card-box">
                                 <div class="profile-info-name text-center">
@@ -120,8 +120,8 @@ $user = $result->fetch_assoc();
                         </div>
                     </div>
 
-                    <div class="col-sm-9 content">
-                        <div class="card-box">
+                    <div class="col-12 col-sm-9 content">
+                        <div class="card-box" style="height:1500px;">
                             <h4 class="header-title mt-0 mb-2wqqq">مشخصات</h4>
                                 <div class="row">
                                     <div class="col-6 col-sm-4 my-1"><strong>کد ملی:</strong> <?php echo $user["NID"]; ?></div>
@@ -177,12 +177,14 @@ $user = $result->fetch_assoc();
 
         <?php include_once "../include/script.php" ; ?>
         <script type="text/javascript">
-        var sidebar = new StickySidebar('.sidebar', {
-            topSpacing: 150,
-            bottomSpacing: 20,
-            containerSelector: '.main-content',
-            innerWrapperSelector: '.sidebar__inner'
-        });
+        if($(window).width() >= 1024){
+            var sidebar = new StickySidebar('.sidebar', {
+                topSpacing: 150,
+                bottomSpacing: 20,
+                containerSelector: '.main-content',
+                innerWrapperSelector: '.sidebar__inner'
+            });
+        }
         </script>
     </body>
 </html>
