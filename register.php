@@ -39,8 +39,8 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
 <html lang="en">
     <head>
     <?php require_once("include/head.php"); ?>
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
-
+    <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
+    <title>ثبت نام</title>
     </head>
 
     <body class="authentication-bg">
@@ -64,7 +64,7 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                            <form action="#" method="POST">
+                                            <form action="#" method="POST" onsubmit="return loginsubmit()">
                                                 <div class="form-group row">
                                                     <div class="col-sm-6">
                                                         <label for="firstname">نام</label>
@@ -95,6 +95,7 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
                                                         <input class="form-control" type="password" name="password" id="reg-password" required>
                                                     </div>
                                                 </div>
+                                                <div style="margin: 0 0 20px; text-align:center;"><div class="g-recaptcha" data-sitekey="6LfyIwwUAAAAABNwVVcouu6qJjBYQ-1yyzCbAAu5"></div></div>
                                                 <div class="form-group mb-0 text-center">
                                                     <button class="btn btn-green btn-block" type="submit">ثبت نام</button>
                                                 </div>
@@ -128,6 +129,15 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
 
         <!-- App js-->
         <script src="assets/js/app.min.js"></script>
+        <script>
+        function loginsubmit() {
+            if (grecaptcha.getResponse() == ""){
+                alert("کپچا وارد نشده است.");
+                return false;
+            }
+            return true;
+        }
+        </script>
         
     </body>
 </html>

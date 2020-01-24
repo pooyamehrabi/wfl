@@ -31,3 +31,7 @@
     background-color: #20505e;
     border-color: #20505e;
 }
+.g-recaptcha div {
+    text-align: center;
+    margin: 0 auto;
+}

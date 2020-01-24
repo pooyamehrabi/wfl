@@ -1,5 +1,5 @@
 <?php
-require_once("../config.php");
+require_once("../../config.php");
 
 $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 $query = "SELECT * FROM users WHERE username='ehsan';";
@@ -10,7 +10,7 @@ $user = $result->fetch_assoc();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <?php include_once "../include/head.php" ; ?>
+    <?php include_once "../../include/head.php" ; ?>
     <style>
     .profile-info-name:hover .edit-profile-image {
         display: block!important;
@@ -46,13 +46,15 @@ $user = $result->fetch_assoc();
                     <div class="logo-box">
                         <a href="<?php echo $crmbase_url; ?>" class="logo text-center">
                             <span class="logo-lg">
-                                <img src="../assets/images/logo-light.png" alt="" height="40">
+                                <img src="../../assets/images/logo-light.png" alt="" height="40">
                             </span>
                             <span class="logo-sm">
-                                <img src="../assets/images/logo-sm.png" alt="" height="24">
+                                <img src="../../assets/images/logo-sm.png" alt="" height="24">
                             </span>
                         </a>
                     </div>
+
+                    <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="dripicons-power" style="color: white;" title="خروج"></i></a></div>
     
                 </div> <!-- end container-fluid-->
             </div>
@@ -65,7 +67,7 @@ $user = $result->fetch_assoc();
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="index.html"><i class="mdi mdi-view-dashboard"></i>کاربران</a>
+                                <p class="my-2"><i class="mdi mdi-view-dashboard m-1"></i>پروفایل</p>
                             </li>
 
                         </ul>
@@ -104,8 +106,8 @@ $user = $result->fetch_assoc();
                                 <div class="profile-info-name text-center">
                                     <div class="text-center" style="position: relative;">
                                         <div class="edit-profile-image" style="display:none;position: absolute;right: 50%;transform: translateX(50%);top: 30%;"><i class="fas fa-edit font-20"></i></div>
-                                        <img src="../assets/images/profile-placeholder.png" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
-                                        <h4 class="m-0">نوید </h4>
+                                        <img src="../../assets/images/profile-placeholder.png" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
+                                        <h4 class="m-0"><?php echo $user["firstname"] . ' ' . $user["lastname"]; ?></h4>
                                     </div>
 
                                     <div class="mt-2">

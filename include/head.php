@@ -18,4 +18,5 @@
         <link href="/crm/assets/css/kamadatepicker.min.css" rel="stylesheet" type="text/css" />
         <link href="/crm/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="/crm/assets/css/app-rtl.min.css" rel="stylesheet" type="text/css" />
+        <link href="/crm/assets/css/style.css" rel="stylesheet" type="text/css" />
         
