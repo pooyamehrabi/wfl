@@ -1,5 +1,7 @@
 <?php
-$conn = new mysqli('localhost', 'root', '', 'crm');
+require_once("../config.php");
+
+$conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 $query = "SELECT * from course;";
 $result = $conn->query($query);
 $output = '' ;
@@ -55,20 +57,7 @@ if ($result->num_rows > 0) {
                             <!-- End mobile menu toggle-->
                         </li>
     
-                        <li class="d-none d-sm-block">
-                            <form class="app-search">
-                                <div class="app-search-box">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit">
-                                                <i class="fe-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
+                        <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="dripicons-power" style="color: white;" title="خروج"></i></a></div>
                 
                     </ul>
     
@@ -76,12 +65,12 @@ if ($result->num_rows > 0) {
                     <div class="logo-box">
                         <a href="index.html" class="logo text-center">
                             <span class="logo-lg">
-                                <img src="assets/images/logo-light.png" alt="" height="16">
+                                <img src="../assets/images/logo-light.png" alt="" height="40">
                                 <!-- <span class="logo-lg-text-light">UBold</span> -->
                             </span>
                             <span class="logo-sm">
                                 <!-- <span class="logo-sm-text-dark">U</span> -->
-                                <img src="assets/images/logo-sm.png" alt="" height="24">
+                                <img src="../assets/images/logo-sm.png" alt="" height="24">
                             </span>
                         </a>
                     </div>
@@ -97,7 +86,7 @@ if ($result->num_rows > 0) {
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="index.html"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
+                                <a href="#"><i class="mdi mdi-view-dashboard"></i>دوره ها</a>
                             </li>
 
                         </ul>
@@ -125,7 +114,7 @@ if ($result->num_rows > 0) {
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Datatables</h4>
+                            <h4 class="page-title">دوره ها</h4>
                         </div>
                     </div>
                 </div>     
