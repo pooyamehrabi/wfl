@@ -18,8 +18,8 @@ CREATE DATABASE IF NOT EXISTS `crm` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `crm`;
 
 -- Dumping structure for table crm.courses
-DROP TABLE IF EXISTS `courses`;
-CREATE TABLE IF NOT EXISTS `courses` (
+DROP TABLE IF EXISTS `Courses`;
+CREATE TABLE IF NOT EXISTS `Courses` (
   `course_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `course_name` varchar(50) NOT NULL,
   `teacher` varchar(50) NOT NULL,
@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS `courses` (
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 
 -- Dumping structure for table crm.users
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `Users`;
+CREATE TABLE IF NOT EXISTS `Users` (
   `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NID` varchar(10) DEFAULT '',
   `wp_username` varchar(40) DEFAULT '',

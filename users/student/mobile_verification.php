@@ -157,7 +157,6 @@ try {
     
     $VerificationCode = $SmsIR_VerificationCode->ultraFastSend($data);
     // $VerificationCode = $SmsIR_VerificationCode->verificationCode($Code, $MobileNumber);
-    var_dump($VerificationCode);
 
 } catch (Exeption $e) {
     echo 'Error VerificationCode : '.$e->getMessage();

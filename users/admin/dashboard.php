@@ -1,8 +1,9 @@
 <?php
 require_once("../../config.php");
+require_once("check_admin.php");
 
 $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
-$query = "SELECT * FROM users;";
+$query = "SELECT * FROM Users;";
 $result = $conn->query($query);
 $output = '' ;
 
@@ -90,16 +91,18 @@ if ($result->num_rows > 0) {
                     <div class="logo-box">
                         <a href="<?php echo $crmbase_url; ?>" class="logo text-center">
                             <span class="logo-lg">
-                                <img src="../assets/images/logo-light.png" alt="" height="40">
+                                <img src="../../assets/images/logo-light.png" alt="" height="40">
                                 <!-- <span class="logo-lg-text-light">UBold</span> -->
                             </span>
                             <span class="logo-sm">
                                 <!-- <span class="logo-sm-text-dark">U</span> -->
-                                <img src="../assets/images/logo-sm.png" alt="" height="24">
+                                <img src="../../assets/images/logo-sm.png" alt="" height="24">
                             </span>
                         </a>
                     </div>
-    
+
+                    <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="dripicons-power" style="color: white;" title="خروج"></i></a></div>
+
                 </div> <!-- end container-fluid-->
             </div>
             <!-- end Topbar -->
@@ -133,7 +136,7 @@ if ($result->num_rows > 0) {
         <!-- ============================================================== -->
 
         <div class="wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid mt-3">
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
@@ -270,7 +273,31 @@ if ($result->num_rows > 0) {
         <script>
         $(document).ready(function () {
             $("#datatable").DataTable({
-                "scrollX": true
+                "scrollX": true,
+                language: {
+                    "sEmptyTable":     "هیچ داده‌ای در جدول وجود ندارد",
+                    "sInfo":           "نمایش _START_ تا _END_ از _TOTAL_ ردیف",
+                    "sInfoEmpty":      "نمایش 0 تا 0 از 0 ردیف",
+                    "sInfoFiltered":   "(فیلتر شده از _MAX_ ردیف)",
+                    "sInfoPostFix":    "",
+                    "sInfoThousands":  ",",
+                    "sLengthMenu":     "نمایش _MENU_ ردیف",
+                    "sLoadingRecords": "در حال بارگزاری...",
+                    "sProcessing":     "در حال پردازش...",
+                    "sSearch":         "جستجو:",
+                    "sZeroRecords":    "رکوردی با این مشخصات پیدا نشد",
+                    "oPaginate": {
+                        "sFirst":    "برگه‌ی نخست",
+                        "sLast":     "برگه‌ی آخر",
+                        "sNext":     "بعدی",
+                        "sPrevious": "قبلی"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": فعال سازی نمایش به صورت صعودی",
+                        "sSortDescending": ": فعال سازی نمایش به صورت نزولی"
+                    }
+                }
+
             });
         });
         </script>

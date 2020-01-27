@@ -9,7 +9,6 @@ $picture = $_POST['picture'];
 $students = $_POST['students'];
 $query = "INSERT INTO course (course_name, teacher, start_course_date, course_time, description, picture, students)
                      VALUES ('$course_name', '$teacher', '$start_course_date', '$course_time', '$description', '$picture', '$students');";
-var_dump($query);
 
 if ($conn->query($query) === TRUE) {
     echo "New record created successfully";

@@ -21,9 +21,8 @@ $refree = $_POST['refree'];
 $refree_name = $_POST['refree_name'];
 $picture = $_POST['picture'];
 $national_card = $_POST['national_card'];
-$query = "INSERT INTO users (NID, firstname, lastname, birthday, civil_status, mobile, phone, email, family_phone, address, degree, job_title, experience, study_field, about, refree, refree_name, picture, national_card)
+$query = "INSERT INTO Users (NID, firstname, lastname, birthday, civil_status, mobile, phone, email, family_phone, address, degree, job_title, experience, study_field, about, refree, refree_name, picture, national_card)
                      VALUES ('$nid', '$firstname', '$lastname', '$birthday', '$civil_status', '$mobile', '$phone', '$email', '$family_phone', '$address', '$degree', '$job_title', '$experience', '$study_field', '$about', '$refree', '$refree_name', '$picture', '$national_card');";
-var_dump($query);
 
 if ($conn->query($query) === TRUE) {
     echo "New record created successfully";

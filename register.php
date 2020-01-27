@@ -12,7 +12,7 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
     $password  = $_POST['password'];
     
     $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
-    $query = "INSERT INTO users (firstname, lastname, mobile, email, username, password)
+    $query = "INSERT INTO Users (firstname, lastname, mobile, email, username, password)
                         VALUES ('$firstname', '$lastname', '$mobile', '$email', '$username', '$password');";
 
     if ($conn->query($query) === true) {

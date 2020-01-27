@@ -14,9 +14,7 @@ if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "logout") {
 }
 
 if(isset($_REQUEST["message"]) && $_REQUEST["message"] == "success") {
-    $success_message = "<div class='alert alert-success text-center mt-3'>
-        حساب کاربری شما با موفقیت ایجاد شد.
-        </div>";
+    $success_message = "<div class='alert alert-success text-center mt-3'> حساب کاربری شما با موفقیت ایجاد شد. </div>";
 }
 
 if (isset($_REQUEST["message"])) {
@@ -67,7 +65,7 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
         }
         die();
     } else {
-        $error_message = "Wrong Username or Password. Try again.";
+        $error_message = "<div class='alert alert-danger text-center mt-3'>نام کاربری یا رمز عبور اشتباه وارد شده است.</div>";
     }    
 }
 
@@ -93,6 +91,7 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
                             </a>
                         </div>
                         <?php echo $success_message; ?>
+                        <?php echo $success_message; ?>
 
                         <div class="card">
 
@@ -102,7 +101,7 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
                                     <h4 class="text-uppercase mt-0">ورود</h4>
                                 </div>
 
-                                <form action="login.php" method="POST"> <!-- onsubmit="return loginsubmit()"> -->
+                                <form action="login.php" method="POST" onsubmit="return loginsubmit()">
                                     <div class="form-group mb-3">
                                         <label for="username">نام کاربری یا ایمیل</label>
                                         <input class="form-control" type="text" name="username" id="username" required>
@@ -147,6 +146,7 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
         <script src="assets/js/app.min.js"></script>
         <script>
         function loginsubmit() {
+            // return true;
             if (grecaptcha.getResponse() == ""){
                 alert("کپچا وارد نشده است.");
                 return false;
