@@ -1,6 +1,6 @@
 <?php
 require_once("../../config.php");
-require_once("../../check_permission.php");
+// require_once("../../check_permission.php");
 $message = '';
 $mobile = $_SESSION["mobile"];
 $mobile[6] = '*';
@@ -16,25 +16,15 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
 <html lang="en">
 
 <head>
-    <?php require_once("../../include/head.php"); ?>
-    <style>
-        #partitioned {
-            margin: 0 20px;
-            letter-spacing: 30px;
-            border: 0;
-            background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
-            background-position: bottom;
-            background-position-x: center;
-            background-size: 42px 1px;
-            background-repeat: repeat-x;
-            background-position-x: 28px;
-            width: 220px;
-            direction: ltr;
-            font-size: 22px;
-            padding: 0 0 0 7px;
-        }
-    </style>
-    <title>تایید موبایل</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Work For Living" name="description" />
+    <meta content="WFL" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <?php require_once("../../include/style.php"); ?>
+    
 </head>
 
 <body class="authentication-bg">
@@ -68,7 +58,7 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
                                     <strong>کد ارسالی: </strong>
                                     <div style="display: inline-block; position: relative;">
                                         <div style="position: absolute; background:white;height: 100%;width: 40px;"></div>
-                                        <input name="input_verify_code" id="partitioned" type="text" maxlength="5" onkeypress="return isNumberKey(event)" required/>
+                                        <input name="input_verify_code" id="partitioned_pin" type="text" maxlength="5" onkeypress="return isNumberKey(event)" required/>
                                     </div>
                                 </div>
 

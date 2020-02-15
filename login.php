@@ -74,7 +74,15 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <?php require_once("include/head.php"); ?>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Work For Living" name="description" />
+    <meta content="WFL" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <?php require_once("/crm/include/style.php"); ?>
+
     <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
     <title>ورود</title>
     </head>
@@ -146,7 +154,7 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
         <script src="assets/js/app.min.js"></script>
         <script>
         function loginsubmit() {
-            // return true;
+            return true;
             if (grecaptcha.getResponse() == ""){
                 alert("کپچا وارد نشده است.");
                 return false;

@@ -11,5 +11,5 @@ $db_database = "crm";
 $crmbase_url = "/crm/";
 $assets_url  = "/crm/assets";
 
-
+$course_image_folder = "/crm/uploads/courses/";
 

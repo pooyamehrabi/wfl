@@ -35,3 +35,22 @@
     text-align: center;
     margin: 0 auto;
 }
+#partitioned_pin {
+    margin: 0 20px;
+    letter-spacing: 30px;
+    border: 0;
+    background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-position-x: center;
+    background-size: 42px 1px;
+    background-repeat: repeat-x;
+    background-position-x: 28px;
+    width: 220px;
+    direction: ltr;
+    font-size: 22px;
+    padding: 0 0 0 7px;
+    height: 40px;
+}
+.profile-info-name:hover .edit-profile-image {
+    display: block!important;
+}
