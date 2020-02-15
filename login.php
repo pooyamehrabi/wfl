@@ -39,18 +39,19 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
         $_SESSION["email"] = $row["email"];
         $_SESSION["permissions"] = json_decode($row["permissions"], true);
         $_SESSION["settings"] = $row["settings"];
-        
+
         switch ($_SESSION["type"]) {
             case 'admin':
                 header("Location: ./users/admin/dashboard.php");
                 break;
             
             case 'student':
-                if($row["mobile_verfied"]) {
+                if($row["mobile_verified"]) {
                     header("Location: ./users/student/profile.php");
                     die();
                 } else {
                     header("Location: ./users/student/check_mobile_verification.php");
+                    die();
                 }
                 break;
             
@@ -74,17 +75,17 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Work For Living" name="description" />
-    <meta content="WFL" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Work For Living" name="description" />
+        <meta content="WFL" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <?php require_once("./include/style.php"); ?>
+        <?php require_once("include/style.php"); ?>
 
-    <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
-    <title>ورود</title>
+        <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
+        <title>ورود</title>
     </head>
 
     <body class="authentication-bg">

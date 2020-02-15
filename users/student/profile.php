@@ -1,8 +1,9 @@
 <?php
 require_once("../../config.php");
 
+$username = $_SESSION["username"];
 $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
-$query = "SELECT * FROM Users WHERE username='ehsan';";
+$query = "SELECT * FROM Users WHERE username='{$username}';";
 $result = $conn->query($query);
 $user = $result->fetch_assoc();
 ?>
@@ -16,6 +17,7 @@ $user = $result->fetch_assoc();
     <meta content="WFL" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <title>پروفایل - <?php echo $user["firstname"] . " " . $user["lastname"] ?></title>
 
     <?php require_once("../../include/style.php"); ?>
     
@@ -113,9 +115,9 @@ $user = $result->fetch_assoc();
                                 </div>
 
                                 <div class="mt-2">
-                                    <div><a href="">پروفایل</a></div>
-                                    <div><a href="">دوره ها</a></div>
-                                    <div><a href="">مالی</a></div>
+                                    <div class="my-2"><a href="">پروفایل</a></div>
+                                    <div class="my-2"><a href="">دوره ها</a></div>
+                                    <div class="my-2"><a href="">مالی</a></div>
                                 </div>
 
                                 <div class="clearfix"></div>
@@ -128,23 +130,23 @@ $user = $result->fetch_assoc();
                     <div class="card-box">
                         <h4 class="header-title mt-0 mb-2wqqq">مشخصات</h4>
                             <div class="row">
-                                <div class="col-6 col-sm-4 my-1"><strong>کد ملی:</strong> <?php echo $user["NID"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>نام:</strong> <?php echo $user["firstname"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>نام خانوادگی:</strong> <?php echo $user["lastname"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>تاریخ تولد:</strong> <?php echo $user["birthday"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>وضعیت تاهل:</strong> <?php echo $user["civil_status"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>موبایل:</strong> <?php echo $user["mobile"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>تلفن:</strong> <?php echo $user["phone"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>ایمیل:</strong> <?php echo $user["email"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>تماس اضطراری:</strong> <?php echo $user["family_phone"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>آدرس:</strong> <?php echo $user["address"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>مدرک:</strong> <?php echo $user["degree"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>رشته تحصیلی:</strong> <?php echo $user["study_field"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>شغل:</strong> <?php echo $user["job_title"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>تجربه تخصص:</strong> <?php echo $user["experience"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>معرف:</strong> <?php echo $user["refree"]; ?></div>
-                                <div class="col-6 col-sm-4 my-1"><strong>نام معرف:</strong> <?php echo $user["refree_name"]; ?></div>
-                                <div class="col-12 col-sm-12 my-1"><strong>درباره خود:</strong> <?php echo $user["about"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>کد ملی:</strong> <?php echo $user["NID"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>نام:</strong> <?php echo $user["firstname"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>نام خانوادگی:</strong> <?php echo $user["lastname"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>تاریخ تولد:</strong> <?php echo $user["birthday"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>وضعیت تاهل:</strong> <?php echo $user["civil_status"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>موبایل:</strong> <?php echo $user["mobile"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>تلفن:</strong> <?php echo $user["phone"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>ایمیل:</strong> <?php echo $user["email"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>تماس اضطراری:</strong> <?php echo $user["family_phone"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>آدرس:</strong> <?php echo $user["address"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>مدرک:</strong> <?php echo $user["degree"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>رشته تحصیلی:</strong> <?php echo $user["study_field"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>شغل:</strong> <?php echo $user["job_title"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>تجربه تخصص:</strong> <?php echo $user["experience"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>معرف:</strong> <?php echo $user["refree"]; ?></div>
+                                <div class="col-6 col-sm-4 my-2"><strong>نام معرف:</strong> <?php echo $user["refree_name"]; ?></div>
+                                <div class="col-12 col-sm-12 my-2"><strong>درباره خود:</strong> <?php echo $user["about"]; ?></div>
                             </div>
                     </div>
 
