@@ -81,7 +81,7 @@ if (isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <?php require_once("/crm/include/style.php"); ?>
+    <?php require_once("./include/style.php"); ?>
 
     <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
     <title>ورود</title>
