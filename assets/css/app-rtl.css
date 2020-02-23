@@ -593,8 +593,6 @@ Responsive Menu
     transition: all .4s; }
     .footer .footer-links a:hover {
       color: #323a46; }
-    .footer .footer-links a:first-of-type {
-      margin-left: 0; }
 
 .footer-alt {
   left: 0 !important;

@@ -28,6 +28,7 @@ if ($result->num_rows > 0) {
     $output .= "<th>نام معرف</th>";
     $output .= "<th>عکس</th>";
     $output .= "<th>عکس کارت ملی</th>";
+    $output .= "<th>ویرایش</th>";
     $output .= "</thead>";
     while($row = $result->fetch_assoc()){
         $output .= "<tr>";
@@ -50,6 +51,7 @@ if ($result->num_rows > 0) {
         $output .= "<td>" . $row["refree_name"] . "</td>";
         $output .= "<td>" . $row["picture"] . "</td>";
         $output .= "<td>" . $row["national_card"] . "</td>";
+        $output .= "<td class='text-center'><a href='user_edit.php?user_id=" . $row["user_id"] . "'><i class='fas fa-edit'></i></a></td>";
         $output .= "</tr>";
     }
     $output .= "</table>";
@@ -72,71 +74,7 @@ if ($result->num_rows > 0) {
 
 <body>
 
-    <!-- Navigation Bar-->
-    <header id="topnav">
-
-        <!-- Topbar Start -->
-        <div class="navbar-custom">
-            <div class="container-fluid">
-                <ul class="list-unstyled topnav-menu float-right mb-0">
-
-                    <li class="dropdown notification-list">
-                        <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle nav-link">
-                            <div class="lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                        <!-- End mobile menu toggle-->
-                    </li>
-
-                </ul>
-
-                <!-- LOGO -->
-                <div class="logo-box">
-                    <a href="<?php echo $crmbase_url; ?>" class="logo text-center">
-                        <span class="logo-lg">
-                            <img src="../../assets/images/logo-light.png" alt="" height="40">
-                            <!-- <span class="logo-lg-text-light">UBold</span> -->
-                        </span>
-                        <span class="logo-sm">
-                            <!-- <span class="logo-sm-text-dark">U</span> -->
-                            <img src="../../assets/images/logo-sm.png" alt="" height="24">
-                        </span>
-                    </a>
-                </div>
-
-                <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="dripicons-power" style="color: white;" title="خروج"></i></a></div>
-
-            </div> <!-- end container-fluid-->
-        </div>
-        <!-- end Topbar -->
-
-        <div class="topbar-menu">
-            <div class="container-fluid">
-                <div id="navigation">
-                    <!-- Navigation Menu-->
-                    <ul class="navigation-menu">
-
-                        <li class="has-submenu">
-                            <a href="index.html"><i class="fas fa-users"></i>کاربران</a>
-                        </li>
-
-                    </ul>
-                    <!-- End navigation menu -->
-
-                    <div class="clearfix"></div>
-                </div>
-                <!-- end #navigation -->
-            </div>
-            <!-- end container -->
-        </div>
-        <!-- end navbar-custom -->
-
-    </header>
-    <!-- End Navigation Bar-->
+    <?php require_once "header.php"; ?>
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
@@ -165,13 +103,12 @@ if ($result->num_rows > 0) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    2016 - 2019 &copy; Adminto theme by <a href="">Coderthemes</a> 
+                    1398 &copy; <a href="">مدرسه موفقیت</a> با <i class="fas fa-heart" style="color: red"></i>
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-right footer-links d-none d-sm-block">
-                        <a href="javascript:void(0);">About Us</a>
-                        <a href="javascript:void(0);">Help</a>
-                        <a href="javascript:void(0);">Contact Us</a>
+                        <a href="https://wfl.ir/about-us/">درباره ما</a>
+                        <a href="https://wfl.ir/contact/">تماس با ما</a>
                     </div>
                 </div>
             </div>

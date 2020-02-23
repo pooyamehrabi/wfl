@@ -58,7 +58,7 @@ $user = $result->fetch_assoc();
                     </a>
                 </div>
 
-                <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="dripicons-power" style="color: white;" title="خروج"></i></a></div>
+                <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="fas fa-power-off" style="color: white;" title="خروج"></i></a></div>
 
             </div> <!-- end container-fluid-->
         </div>
@@ -167,13 +167,12 @@ $user = $result->fetch_assoc();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    2016 - 2019 &copy; Adminto theme by <a href="">Coderthemes</a> 
+                    1398 &copy; <a href="">مدرسه موفقیت</a> با <i class="fas fa-heart" style="color: red"></i>
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-right footer-links d-none d-sm-block">
-                        <a href="javascript:void(0);">About Us</a>
-                        <a href="javascript:void(0);">Help</a>
-                        <a href="javascript:void(0);">Contact Us</a>
+                        <a href="https://wfl.ir/about-us/">درباره ما</a>
+                        <a href="https://wfl.ir/contact/">تماس با ما</a>
                     </div>
                 </div>
             </div>

@@ -6,11 +6,9 @@ $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 $query = "SELECT * FROM Users WHERE username='{$username}';";
 $result = $conn->query($query);
 $user = $result->fetch_assoc();
-?>
-
-<?php
-    $query = "INSERT INTO Users (firstname, lastname, birthday, mobile, phone, email, family_phone, address, study_field, job_title, experience, about)
-                    VALUES ('$firstname', '$lastname', '$birthday', '$mobile', '$phone', '$email', '$family_phone', '$address', '$study_field', '$job_title', '$experience', '$about');";
+$query = "UPDATE Users 
+          SET firstname='$firstname', lastname='$lastname', birthday='$birthday', mobile='$mobile', phone='$phone', email='$email', family_phone='$family_phone', address='$address', study_field='$study_field', job_title='$job_title', experience='$experience', about='$about'
+          WHERE username='$username';";
 
 ?>
 
@@ -64,7 +62,7 @@ $user = $result->fetch_assoc();
                     </a>
                 </div>
 
-                <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="dripicons-power" style="color: white;" title="خروج"></i></a></div>
+                <div style="position: absolute;left: 20px;font-size: 30px;top: 18px;"><a href="../../login.php?action=logout"><i class="fas fa-power-off" style="color: white;" title="خروج"></i></a></div>
 
             </div> <!-- end container-fluid-->
         </div>
@@ -152,7 +150,7 @@ $user = $result->fetch_assoc();
                                 <div class="col-6 col-sm-6 my-2 row"><div class="col-5"><strong>تجربه تخصص:</strong></div> <div class="col-7"><input class="form-control" name="experience" type="text" value="<?php echo $user["experience"]; ?>"></div></div>
                                 <div class="col-6 col-sm-6 my-2 row"><div class="col-5"><strong>معرف:</strong></div> <?php echo $user["refree"]; ?></div>
                                 <div class="col-6 col-sm-6 my-2 row"><div class="col-5"><strong>نام معرف:</strong></div> <?php echo $user["refree_name"]; ?></div>
-                                <div class="col-12 col-sm-12 my-2 row"><div class="col-3"><strong>درباره خود:</strong></div> <div class="col-7"><input class="form-control" name="about" type="text" value="<?php echo $user["about"]; ?>"></div></div>
+                                <div class="col-12 col-sm-12 my-2 row"><div class="col-3"><strong>درباره خود:</strong></div> <div class="col-9"><textarea class="form-control" name="about" style="width:100%;"><?php echo $user["about"]; ?></textarea></div></div>
                             </div>
                     </div>
 
@@ -173,13 +171,12 @@ $user = $result->fetch_assoc();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    2016 - 2019 &copy; Adminto theme by <a href="">Coderthemes</a> 
+                    1398 &copy; <a href="">مدرسه موفقیت</a> با <i class="fas fa-heart" style="color: red"></i>
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-right footer-links d-none d-sm-block">
-                        <a href="javascript:void(0);">About Us</a>
-                        <a href="javascript:void(0);">Help</a>
-                        <a href="javascript:void(0);">Contact Us</a>
+                        <a href="https://wfl.ir/about-us/">درباره ما</a>
+                        <a href="https://wfl.ir/contact/">تماس با ما</a>
                     </div>
                 </div>
             </div>
