@@ -1,5 +1,33 @@
 <?php
-$page_title = 'عضویت در مدرسه موفقیت';
+require_once("../../config.php");
+$conn = new mysqli($db_server, $db_username, $db_password, $db_database);
+
+$user_id = $_SESSION["user_id"];
+if (isset($_REQUEST["edit_user"]) && $_REQUEST["edit_user"]) {
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $birthday = $_POST['birthday'];
+    $mobile = $_POST['mobile'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $family_phone = $_POST['family_phone'];
+    $address = $_POST['address'];
+    $job_title = $_POST['job_title'];
+    $experience = $_POST['experience'];
+    $study_field = $_POST['study_field'];
+    $about = $_POST['about'];
+    $query = "UPDATE Users 
+              SET firstname='$firstname', lastname='$lastname', birthday='$birthday', mobile='$mobile', phone='$phone', 
+                  email='$email', family_phone='$family_phone', address='$address', study_field='$study_field', 
+                  job_title='$job_title', experience='$experience', about='$about' 
+              WHERE user_id='{$user_id}';";
+    $conn->query($query);
+}
+
+$query = "SELECT * FROM Users WHERE user_id='$user_id';";
+$result = $conn->query($query);
+$user = $result->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +39,7 @@ $page_title = 'عضویت در مدرسه موفقیت';
     <meta content="WFL" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <title>پروفایل - <?php echo $user["firstname"] . " " . $user["lastname"] ?></title>
 
     <?php require_once("../../include/style.php"); ?>
     
@@ -18,224 +47,71 @@ $page_title = 'عضویت در مدرسه موفقیت';
 
 <body>
 
-    <div class="wrapper">
-        <form class="form-horizontal" action="user_handler.php" method="post" data-parsley-validate>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="mt-0 mb-3 header-title">مشخصات فردی</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="firstname" class="text-right col-sm-3 col-form-label">نام</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="firstname" class="form-control" id="firstname" placeholder="نام" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="lastname" class="col-sm-3 col-form-label text-right">نام خانوادگی</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="lastname" class="form-control" id="lastname" placeholder="نام خانوادگی" >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="national-code" class="text-right col-sm-3 col-form-label">کد ملی</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="national-code" class="form-control" id="national-code" placeholder="کد ملی" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="birthday" class="col-sm-3 col-form-label text-right">تاریخ تولد</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="birthday" class="form-control" id="birthday" placeholder="تاریخ تولد" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="civil_status" class="col-sm-3 col-form-label text-right">وضعیت تاهل</label>
-                                        <div class="col-sm-9" style="padding-top:10px;">
-                                            <input type="radio" value="مجرد" name="civil_status" style="position: relative;top:3px;margin:0 5px;" >مجرد
-                                            <input type="radio" value="متاهل" name="civil_status" style="position: relative;top:3px;margin: 0 10px 0 5px;" >متاهل
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="mt-0 mb-3 header-title">مشخصات تماس</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="mobile" class="text-right col-sm-3 col-form-label">موبایل</label>
-                                        <div class="col-sm-9">
-                                            <input type="tel" name="mobile" pattern="09[0-9]{9}" class="form-control" id="mobile" placeholder="09xxxxxxxxx" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="tel" class="col-sm-3 col-form-label text-right">تلفن ثابت</label>
-                                        <div class="col-sm-9">
-                                            <input type="tel" name="phone" class="form-control" placeholder="021xxxxxxxx" >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="email" class="text-right col-sm-3 col-form-label">ایمیل</label>
-                                        <div class="col-sm-9">
-                                            <input type="email" name="email" class="form-control" id="email" placeholder="ایمیل" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="tel-emergency" class="col-sm-3 col-form-label text-right">تلفن ضروری</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="family_phone" class="form-control" id="tel-emergency" placeholder="تلفن یکی از اقوام نزدیک" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="address" class="col-sm-3 col-form-label text-right">آدرس</label>
-                                        <div class="col-sm-9">
-                                            <textarea name="address" class="form-control" id="address" placeholder="آدرس" ></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="mt-0 mb-3 header-title">سوابق</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="degree" class="text-right col-sm-4 col-form-label">مدرک تحصیلی</label>
-                                        <div class="col-sm-8">
-                                            <select type="text" class="form-control" id="degree" placeholder="مدرک تحصیلی" >
-                                                <option value=""></option>
-                                                <option name="degree" value="diploma">دیپلم</option>
-                                                <option name="degree" value="graduate">لیسانس</option>
-                                                <option name="degree" value="master">فوق لیسانس</option>
-                                                <option name="degree" value="doctorate">دکترا</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="extra" class="col-sm-4 col-form-label text-right">رشته تحصیلی</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="study_field" class="form-control" id="study_field" placeholder="رشته تحصیلی" >       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                            <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="job" class="col-sm-4 col-form-label text-right">شغل</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="job_title" class="form-control" id="job" placeholder="شغل" >
-                                        </div>
-                                    </div>
-                                </div>    
-                            <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="experience" class="text-right col-sm-4 col-form-label">تجربه و تخصص</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="experience" class="form-control" id="experience" placeholder="تجربه و تخصص" >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group row">
-                                        <label for="bio" class="col-sm-4 col-md-12 col-form-label text-left">درباره خود</label>
-                                        <div class="col-sm-8 col-md-12">
-                                            <textarea name="about" class="form-control" id="bio" placeholder="درباره خود"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <?php include_once "header.php"; ?>
 
-                        </div>
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="wrapper">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                        <h4 class="page-title my-3">ویرایش پروفایل</h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="header-title mt-0 mb-3">معرف</h4>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <select id="refree-type" name="refree" class="form-control" >
-                                        <option value=""></option>
-                                        <option name="refree" value="telegram">تلگرام</option>
-                                        <option name="refree" value="instagram">اینستاگرام</option>
-                                        <option name="refree" value="website">وب سایت</option>
-                                        <option name="refree" value="refree">از طریق آشنایان</option>
-                                        <option name="refree" value="others">سایر موارد</option>
-                                    </select>                
+            </div>     
+
+            <div class="row main-content">
+                <div class="col-12 col-sm-3 sidebar">
+                    <div class="sidebar__inner">
+                        <div class="bg-picture card-box">
+                            <div class="profile-info-name text-center">
+                                <div class="text-center" style="position: relative;">
+                                    <div class="edit-profile-image" style="display:none;position: absolute;right: 50%;transform: translateX(50%);top: 30%;"><i class="fas fa-edit font-20"></i></div>
+                                    <img src="../../assets/images/profile-placeholder.png" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
+                                    <h4 class="m-0"><?php echo $user["firstname"] . ' ' . $user["lastname"]; ?></h4>
                                 </div>
-                                <div id="refree-field" class="col-sm-6" style="display: none;">
-                                    <div class="form-group row">
-                                        <label for="refree_name" class="text-right col-sm-4 col-form-label">نام معرف</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="refree_name" class="form-control" id="refree-name" placeholder="نام معرف">
-                                        </div>
-                                    </div>        
-                                </div>
+
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card-box">
-                            <h4 class="header-title mt-0 mb-3">عکس</h4>
-                            <input type="file" name="picture" class="dropify" data-max-file-size="1M"  />
-                            <span style="font-size: 11px;">حداکثر حجم عکس 1 مگابیات</span><br>
-                            <span style="font-size: 11px;">عکس تمام رخ باشد(عکس پرسنلی)</span>
-                        </div>
-                    </div><!-- end col -->
-                    <div class="col-md-6">
-                        <div class="card-box">
-                            <h4 class="header-title mt-0 mb-3">تصویر کارت ملی</h4>
-                            <input type="file" name="national_card" class="dropify" data-max-file-size="1M"  />
-                            <span style="font-size: 11px;">حداکثر حجم عکس 1 مگابیات</span><br>
-                            <span style="font-size: 11px;">تصویر کارت ملی واضح باشد</span>
-                        </div>
-                    </div><!-- end col -->
-                </div>
-            </div> <!-- end container -->
-            <div class="form-group mb-3 justify-content-end row">
-                <div class="col-sm-12 text-center">
-                    <button type="submit" value="submit" class="btn btn-info waves-effect waves-light">ثبت نام</button>
+
+                <div class="col-12 col-sm-9 content">
+                    <div class="card-box">
+                        <h4 class="header-title mt-0 mb-2">مشخصات</h4>
+                        <form class="row form-group" action="" method="POST">
+                            <input type="hidden" name="edit_user" value="true">
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام:</strong></div> <div class="col-7"><input class="form-control" name="firstname" type="text" value="<?php echo $user["firstname"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام خانوادگی:</strong></div> <div class="col-7"><input class="form-control" name="lastname" type="text" value="<?php echo $user["lastname"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تاریخ تولد:</strong></div> <div class="col-7"><input class="form-control" name="birthday" type="text" value="<?php echo $user["birthday"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>وضعیت تاهل:</strong></div> <?php echo $user["civil_status"]; ?></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>موبایل:</strong></div> <div class="col-7"><input class="form-control" name="mobile" type="text" value="<?php echo $user["mobile"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تلفن:</strong></div> <div class="col-7"><input class="form-control" name="phone" type="text" value="<?php echo $user["phone"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>ایمیل:</strong></div> <div class="col-7"><input class="form-control" name="email" type="text" value="<?php echo $user["email"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تماس اضطراری:</strong></div> <div class="col-7"><input class="form-control" name="family_phone" type="text" value="<?php echo $user["family_phone"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>آدرس:</strong></div> <div class="col-7"><input class="form-control" name="address" type="text" value="<?php echo $user["address"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>مدرک:</strong></div> <?php echo $user["degree"]; ?></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>رشته تحصیلی:</strong></div> <div class="col-7"><input class="form-control" name="study_field" type="text" value="<?php echo $user["study_field"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>شغل:</strong></div> <div class="col-7"><input class="form-control" name="job_title" type="text" value="<?php echo $user["job_title"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تجربه تخصص:</strong></div> <div class="col-7"><input class="form-control" name="experience" type="text" value="<?php echo $user["experience"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>معرف:</strong></div> <?php echo $user["refree"]; ?></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام معرف:</strong></div> <?php echo $user["refree_name"]; ?></div>
+                            <div class="col-12 col-sm-12 my-2 row"><div class="col-3 text-right"><strong>درباره خود:</strong></div> <div class="col-9"><textarea class="form-control" name="about" style="width:100%;"><?php echo $user["about"]; ?></textarea></div></div>
+                            <div class="col-12"><button class="btn btn-bordred-success" type="submit">ذخیره</button></div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
-        </form>
+            <!-- end row -->
+
+        </div> <!-- end container -->
     </div>
     <!-- end wrapper -->
 
@@ -248,13 +124,12 @@ $page_title = 'عضویت در مدرسه موفقیت';
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    2019 &copy; <a href="http://wfl.ir">WFL</a> 
+                    1398 &copy; <a href="">مدرسه موفقیت</a> با <i class="fas fa-heart" style="color: red"></i>
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-right footer-links d-none d-sm-block">
-                        <a href="javascript:void(0);">About Us</a>
-                        <a href="javascript:void(0);">Help</a>
-                        <a href="javascript:void(0);">Contact Us</a>
+                        <a href="https://wfl.ir/about-us/">درباره ما</a>
+                        <a href="https://wfl.ir/contact/">تماس با ما</a>
                     </div>
                 </div>
             </div>
@@ -263,29 +138,15 @@ $page_title = 'عضویت در مدرسه موفقیت';
     <!-- end Footer -->
 
     <?php include_once "../include/script.php" ; ?>
-    <script>
-    $( document ).ready(function() {
-        kamaDatepicker('birthday');
-        $(".dropify").dropify({
-            messages:{
-                default:"عکس خود را بیندازید اینجا",
-                replace:"برای جایگزینی عکس جدید را روی این عکس بیندازید",
-                remove:"پاک کردن",
-                error:"مشکلی پیش آمد، دوباره تلاش کنید"
-            },
-            error:{
-                fileSize:"حجم فایل شما بیش از میزان مورد قبول است (حداکثر: 1 مگابایت)"
-            }
+    <script type="text/javascript">
+    if($(window).width() >= 1024){
+        var sidebar = new StickySidebar('.sidebar', {
+            topSpacing: 150,
+            bottomSpacing: 20,
+            containerSelector: '.main-content',
+            innerWrapperSelector: '.sidebar__inner'
         });
-        $("#refree-type").change(function(){
-            $("#refree-field").hide();
-            if($("#refree-type").val() == 'refree') {
-                $("#refree-field").show();
-            }
-        })
-        $('form').parsley();
-    });
+    }
     </script>
-            
 </body>
 </html>

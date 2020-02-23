@@ -4,6 +4,7 @@ $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 
 $user_id = $_REQUEST["user_id"];
 if (isset($_REQUEST["edit_user"]) && $_REQUEST["edit_user"]) {
+    $type = $_POST['type'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $birthday = $_POST['birthday'];
@@ -19,7 +20,7 @@ if (isset($_REQUEST["edit_user"]) && $_REQUEST["edit_user"]) {
     $query = "UPDATE Users 
               SET firstname='$firstname', lastname='$lastname', birthday='$birthday', mobile='$mobile', phone='$phone', 
                   email='$email', family_phone='$family_phone', address='$address', study_field='$study_field', 
-                  job_title='$job_title', experience='$experience', about='$about'
+                  job_title='$job_title', experience='$experience', about='$about', type='$type' 
               WHERE user_id='{$user_id}';";
     $conn->query($query);
 }
@@ -59,7 +60,7 @@ $user = $result->fetch_assoc();
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
-                        <h4 class="page-title my-3">نام</h4>
+                        <h4 class="page-title my-3">ویرایش پروفایل</h4>
                     </div>
                 </div>
             </div>     
@@ -90,10 +91,10 @@ $user = $result->fetch_assoc();
                                 <div class="col-6 col-sm-3 text-right pt-1"><strong>نوع حساب:</strong></div>
                                 <div class="col-6 col-sm-3">
                                     <select name="type" class="form-control">
-                                        <option value="admin">ادمین</option>
-                                        <option value="teacher">استاد</option>
-                                        <option value="student">دانش آموز</option>
-                                        <option value="accountant">حسابدار</option>
+                                        <option <?php echo ($user["type"] == "admin") ? "selected" : ""; ?> value="admin">ادمین</option>
+                                        <option <?php echo ($user["type"] == "teacher") ? "selected" : ""; ?> value="teacher">استاد</option>
+                                        <option <?php echo ($user["type"] == "student") ? "selected" : ""; ?> value="student">دانش آموز</option>
+                                        <option <?php echo ($user["type"] == "accountant") ? "selected" : ""; ?> value="accountant">حسابدار</option>
                                     </select>
                                 </div>
                             </div>
