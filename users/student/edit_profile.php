@@ -89,19 +89,45 @@ $user = $result->fetch_assoc();
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام:</strong></div> <div class="col-7"><input class="form-control" name="firstname" type="text" value="<?php echo $user["firstname"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام خانوادگی:</strong></div> <div class="col-7"><input class="form-control" name="lastname" type="text" value="<?php echo $user["lastname"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تاریخ تولد:</strong></div> <div class="col-7"><input class="form-control" name="birthday" type="text" value="<?php echo $user["birthday"]; ?>"></div></div>
-                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>وضعیت تاهل:</strong></div> <?php echo $user["civil_status"]; ?></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>وضعیت تاهل:</strong></div> 
+                                <div class="col-7">
+                                    <select name="type" class="form-control">
+                                        <option <?php echo ($user["civil_status"] == "single") ? "selected" : ""; ?> value="Single">مجرد</option>
+                                        <option <?php echo ($user["civil_status"] == "married") ? "selected" : ""; ?> value="married">متاهل</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>موبایل:</strong></div> <div class="col-7"><input class="form-control" name="mobile" type="text" value="<?php echo $user["mobile"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تلفن:</strong></div> <div class="col-7"><input class="form-control" name="phone" type="text" value="<?php echo $user["phone"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>ایمیل:</strong></div> <div class="col-7"><input class="form-control" name="email" type="text" value="<?php echo $user["email"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تماس اضطراری:</strong></div> <div class="col-7"><input class="form-control" name="family_phone" type="text" value="<?php echo $user["family_phone"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>آدرس:</strong></div> <div class="col-7"><input class="form-control" name="address" type="text" value="<?php echo $user["address"]; ?>"></div></div>
-                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>مدرک:</strong></div> <?php echo $user["degree"]; ?></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>مدرک:</strong></div>
+                                <div class="col-7">
+                                    <select name="type" class="form-control">
+                                        <option <?php echo ($user["degree"] == "diploma") ? "selected" : ""; ?> value="diploma">دیپلم</option>
+                                        <option <?php echo ($user["degree"] == "associate") ? "selected" : ""; ?> value="associate">فوق دیپلم</option>
+                                        <option <?php echo ($user["degree"] == "bachelor") ? "selected" : ""; ?> value="bachelor">لیسانس</option>
+                                        <option <?php echo ($user["degree"] == "master") ? "selected" : ""; ?> value="master">فوق لیسانس</option>
+                                        <option <?php echo ($user["degree"] == "doctorate") ? "selected" : ""; ?> value="doctorate">دکترا</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>رشته تحصیلی:</strong></div> <div class="col-7"><input class="form-control" name="study_field" type="text" value="<?php echo $user["study_field"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>شغل:</strong></div> <div class="col-7"><input class="form-control" name="job_title" type="text" value="<?php echo $user["job_title"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تجربه تخصص:</strong></div> <div class="col-7"><input class="form-control" name="experience" type="text" value="<?php echo $user["experience"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"></div></div>
-                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>معرف:</strong></div> <?php echo $user["refree"]; ?></div>
-                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام معرف:</strong></div> <?php echo $user["refree_name"]; ?></div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>معرف:</strong></div> 
+                                <div class="col-7">
+                                    <select name="type" class="form-control">
+                                        <option <?php echo ($user["refree"] == "telegram") ? "selected" : ""; ?> value="telegram">تلگرام</option>
+                                        <option <?php echo ($user["refree"] == "instagram") ? "selected" : ""; ?> value="instagram">اینستاگرام</option>
+                                        <option <?php echo ($user["refree"] == "friends") ? "selected" : ""; ?> value="friends">دوستان</option>
+                                        <option <?php echo ($user["refree"] == "mofid_broker") ? "selected" : ""; ?> value="mofid_broker">کارگزاری مفید</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام معرف:</strong></div> <div class="col-7"><input class="form-control" name="refree_name" type="text" value=" <?php echo $user["refree_name"]; ?>"></div></div>
                             <div class="col-12 col-sm-12 my-2 row"><div class="col-3 text-right"><strong>درباره خود:</strong></div> <div class="col-9"><textarea class="form-control" name="about" style="width:100%;"><?php echo $user["about"]; ?></textarea></div></div>
                             <div class="col-12"><button class="btn btn-bordred-success" type="submit">ذخیره</button></div>
                         </form>

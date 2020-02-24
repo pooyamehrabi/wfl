@@ -47,11 +47,7 @@
                     <ul class="navigation-menu">
 
                     <li class="has-submenu">
-                            <a href="dashboard.php"><i class="fas fa-users"></i>داشبورد</a>
-                        </li>
-
-                        <li class="has-submenu">
-                            <a href="users_show.php"><i class="fas fa-users"></i>کاربران</a>
+                            <a href="profile.php"><i class="fas fa-users"></i>پروفایل</a>
                         </li>
 
                         <li class="has-submenu">
