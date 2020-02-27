@@ -199,15 +199,12 @@ $user = $result->fetch_assoc();
     setRefereeVisibility();
 
     $(".dropify").dropify({
-        messages: {
-            default: "Drag and drop a file here or click",
-            replace: "Drag and drop or click to replace",
-            remove: "Remove",
-            error: "Ooops, something wrong appended."
+        messages:{
+            default:"عکس خود را بیندازید اینجا",
+            replace:"برای جایگزینی عکس جدید را روی این عکس بیندازید",
+            remove:"پاک کردن",
+            error:"مشکلی پیش آمد، دوباره تلاش کنید"
         },
-        error: {
-            fileSize: "The file size is too big (1M max)."
-        }
     });
 
     if($(window).width() >= 1024){

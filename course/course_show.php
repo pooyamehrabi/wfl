@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <?php require_once("/crm/include/style.php"); ?>
+    <?php require_once("../include/style.php"); ?>
     
 </head>
 
