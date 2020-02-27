@@ -133,7 +133,7 @@ $query = "UPDATE Users
 
                 <div class="col-12 col-sm-9 content">
                     <div class="card-box">
-                        <h4 class="header-title mt-0 mb-2wqqq">مشخصات</h4>
+                        <h4 class="header-title mt-0 mb-2">مشخصات</h4>
                             <div class="row form-group">
                                 <div class="col-6 col-sm-6 my-2 row"><div class="col-5"><strong>نام:</strong></div> <div class="col-7"><input class="form-control" name="firstname" type="text" value="<?php echo $user["firstname"]; ?>"></div></div>
                                 <div class="col-6 col-sm-6 my-2 row"><div class="col-5"><strong>نام خانوادگی:</strong></div> <div class="col-7"><input class="form-control" name="lastname" type="text" value="<?php echo $user["lastname"]; ?>"></div></div>

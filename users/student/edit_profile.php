@@ -4,6 +4,25 @@ $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 
 $user_id = $_SESSION["user_id"];
 if (isset($_REQUEST["edit_user"]) && $_REQUEST["edit_user"]) {
+
+    if ($_FILES["picture"]["name"]) {
+        $picture = $user_id . "." . pathinfo($_FILES["picture"]["name"], PATHINFO_EXTENSION);
+        $picture_location = $profile_image_path . $picture;
+        if (!move_uploaded_file($_FILES["picture"]["tmp_name"], $picture_location)) {
+            // TODO: invalid picture
+            $picture = "placeholder.png";
+        }
+    }
+
+    if ($_FILES["national_card"]["name"]) {
+        $national_card = $user_id . "." . pathinfo($_FILES["national_card"]["name"], PATHINFO_EXTENSION);
+        $national_card_location = $national_card_image_path . $national_card;
+        if (!move_uploaded_file($_FILES["national_card"]["tmp_name"], $national_card_location)) {
+            // TODO: invalid national_card
+            $national_card = "placeholder.png";
+        }
+    }
+
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $birthday = $_POST['birthday'];
@@ -16,11 +35,14 @@ if (isset($_REQUEST["edit_user"]) && $_REQUEST["edit_user"]) {
     $experience = $_POST['experience'];
     $study_field = $_POST['study_field'];
     $about = $_POST['about'];
-    $query = "UPDATE Users 
-              SET firstname='$firstname', lastname='$lastname', birthday='$birthday', mobile='$mobile', phone='$phone', 
-                  email='$email', family_phone='$family_phone', address='$address', study_field='$study_field', 
-                  job_title='$job_title', experience='$experience', about='$about' 
-              WHERE user_id='{$user_id}';";
+    $query = "UPDATE Users SET 
+                firstname='$firstname', lastname='$lastname', birthday='$birthday', mobile='$mobile', phone='$phone', 
+                email='$email', family_phone='$family_phone', address='$address', study_field='$study_field', 
+                job_title='$job_title', experience='$experience' ";
+    if($about)         $query .= ", about='$about' ";
+    if($picture)       $query .= ", picture='$picture' ";
+    if($national_card) $query .= ", national_card='$national_card' ";
+    $query .= "WHERE user_id='{$user_id}';";
     $conn->query($query);
 }
 
@@ -59,8 +81,7 @@ $user = $result->fetch_assoc();
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
-                        <h4 class="page-title my-3">ویرایش پروفایل</h4>
-                    </div>
+                    <h4 class="page-title my-3">ویرایش پروفایل</h4>
                 </div>
             </div>     
 
@@ -71,7 +92,7 @@ $user = $result->fetch_assoc();
                             <div class="profile-info-name text-center">
                                 <div class="text-center" style="position: relative;">
                                     <div class="edit-profile-image" style="display:none;position: absolute;right: 50%;transform: translateX(50%);top: 30%;"><i class="fas fa-edit font-20"></i></div>
-                                    <img src="../../assets/images/profile-placeholder.png" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
+                                    <img src="<?php echo $profile_image_folder . $user["picture"]; ?>" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
                                     <h4 class="m-0"><?php echo $user["firstname"] . ' ' . $user["lastname"]; ?></h4>
                                 </div>
 
@@ -84,7 +105,7 @@ $user = $result->fetch_assoc();
                 <div class="col-12 col-sm-9 content">
                     <div class="card-box">
                         <h4 class="header-title mt-0 mb-2">مشخصات</h4>
-                        <form class="row form-group" action="" method="POST">
+                        <form class="row form-group" action="" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="edit_user" value="true">
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام:</strong></div> <div class="col-7"><input class="form-control" name="firstname" type="text" value="<?php echo $user["firstname"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام خانوادگی:</strong></div> <div class="col-7"><input class="form-control" name="lastname" type="text" value="<?php echo $user["lastname"]; ?>"></div></div>
@@ -119,7 +140,7 @@ $user = $result->fetch_assoc();
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>معرف:</strong></div> 
                                 <div class="col-7">
-                                    <select name="type" class="form-control">
+                                    <select name="type" id="referee" class="form-control" onchange="setRefereeVisibility(this)">
                                         <option <?php echo ($user["refree"] == "telegram") ? "selected" : ""; ?> value="telegram">تلگرام</option>
                                         <option <?php echo ($user["refree"] == "instagram") ? "selected" : ""; ?> value="instagram">اینستاگرام</option>
                                         <option <?php echo ($user["refree"] == "friends") ? "selected" : ""; ?> value="friends">دوستان</option>
@@ -127,8 +148,10 @@ $user = $result->fetch_assoc();
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام معرف:</strong></div> <div class="col-7"><input class="form-control" name="refree_name" type="text" value=" <?php echo $user["refree_name"]; ?>"></div></div>
+                            <div class="col-12 col-sm-6 my-2 row referee-name"><div class="col-5 text-right pt-1"><strong>نام معرف:</strong></div> <div class="col-7"><input class="form-control" name="refree_name" type="text" value=" <?php echo $user["refree_name"]; ?>"></div></div>
                             <div class="col-12 col-sm-12 my-2 row"><div class="col-3 text-right"><strong>درباره خود:</strong></div> <div class="col-9"><textarea class="form-control" name="about" style="width:100%;"><?php echo $user["about"]; ?></textarea></div></div>
+                            <div class="col-6 my-3">عکس پرسنلی: <div style="height: 10px"></div><input name="picture" type="file" class="dropify" data-default-file="<?php echo $profile_image_folder . $user["picture"]; ?>" /></div>
+                            <div class="col-6 my-3">کارت ملی: <div style="height: 10px"></div><input name="national_card" type="file" class="dropify" data-default-file="<?php echo $national_card_image_folder . $user["national_card"]; ?>" /></div>
                             <div class="col-12"><button class="btn btn-bordred-success" type="submit">ذخیره</button></div>
                         </form>
                     </div>
@@ -163,8 +186,30 @@ $user = $result->fetch_assoc();
     </footer>
     <!-- end Footer -->
 
-    <?php include_once "../include/script.php" ; ?>
+    <?php include_once "../../include/script.php" ; ?>
     <script type="text/javascript">
+    function setRefereeVisibility() {
+        var refree_tye = $('#referee').find(":selected").val();
+        if (refree_tye == "friends") {
+            $(".referee-name").show();
+        } else {
+            $(".referee-name").hide();
+        }
+    }
+    setRefereeVisibility();
+
+    $(".dropify").dropify({
+        messages: {
+            default: "Drag and drop a file here or click",
+            replace: "Drag and drop or click to replace",
+            remove: "Remove",
+            error: "Ooops, something wrong appended."
+        },
+        error: {
+            fileSize: "The file size is too big (1M max)."
+        }
+    });
+
     if($(window).width() >= 1024){
         var sidebar = new StickySidebar('.sidebar', {
             topSpacing: 150,
