@@ -32,9 +32,13 @@ while ($teacher = $result->fetch_assoc()) {
 
 <body>
 
-    <div class="wrapper">
+<!-- Navigation Bar-->
+<?php require_once "header.php"; ?>
+<!-- End Navigation Bar-->
+
+    <div class="wrapper mb-3">
         <form class="form-horizontal" action="course_save.php" method="post" data-parsley-validate>
-            <div class="container">
+            <div class="container mt-3">
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
@@ -44,7 +48,7 @@ while ($teacher = $result->fetch_assoc()) {
                                     <div class="form-group row">
                                         <label for="course_name" class="text-right col-sm-3 col-form-label">نام دوره</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="course_name" class="form-control" id="course_name" placeholder="نام دوره" >
+                                            <input type="text" name="course_name" class="form-control" id="course_name" placeholder="نام دوره" required>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +56,7 @@ while ($teacher = $result->fetch_assoc()) {
                                     <div class="form-group row">
                                         <label for="teacher" class="text-right col-sm-4 col-form-label">مدرس دوره</label>
                                         <div class="col-sm-8">
-                                            <select type="text" class="form-control" id="teacher" placeholder="مدرک تحصیلی" >
+                                            <select type="text" class="form-control" id="teacher" required>
                                                 <option value=""></option>
                                                 <?php
                                                 foreach ($teachers as $teacher ) {
@@ -75,7 +79,7 @@ while ($teacher = $result->fetch_assoc()) {
                                     <div class="form-group row">
                                         <label for="start_course_date" class="col-sm-3 col-form-label text-right">تاریخ شروع دوره</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="start_course_date" class="form-control" id="start_course_date" placeholder="تاریخ شروع دوره" >
+                                            <input type="text" name="start_course_date" class="form-control" id="start_course_date" placeholder="تاریخ شروع دوره" required>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +112,7 @@ while ($teacher = $result->fetch_assoc()) {
                     <div class="col-md-6">
                         <div class="card-box">
                             <h4 class="header-title mt-0 mb-3">عکس دوره</h4>
-                            <input type="file" name="image" class="dropify" data-max-file-size="2M" />
+                            <input type="file" name="image" class="dropify" data-max-file-size="2M" >
                             <span style="font-size: 11px;">حداکثر حجم عکس 5 مگابیات</span>
                         </div>
                     </div><!-- end col -->
@@ -128,25 +132,10 @@ while ($teacher = $result->fetch_assoc()) {
     <!-- ============================================================== -->
 
     <!-- Footer Start -->
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                    2019 &copy; <a href="http://wfl.ir">WFL</a> 
-                </div>
-                <div class="col-md-6">
-                    <div class="text-md-right footer-links d-none d-sm-block">
-                        <a href="javascript:void(0);">About Us</a>
-                        <a href="javascript:void(0);">Help</a>
-                        <a href="javascript:void(0);">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php require_once "../include/footer.php" ; ?>
     <!-- end Footer -->
 
-    <?php include_once "../include/script.php" ; ?>
+    <?php require_once "../include/script.php" ; ?>
 
     <script>
     $( document ).ready(function() {

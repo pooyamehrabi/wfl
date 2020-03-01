@@ -18,17 +18,17 @@ if (isset($_REQUEST["add_course"]) && $_REQUEST["add_course"]) {
 
 $course_name = $_POST['course_name'];
 $teacher = $_POST['teacher'];
-$presentation_date = $_POST['presentation_date'];
+$presentation_date = ($_POST['presentation_date']) ? $_POST['presentation_date'] : NULL;
 $start_course_date = $_POST['start_course_date'];
 $course_time = $_POST['course_time'];
 $description = $_POST['description'];
-$picture = $_POST['picture'];
+$image = $_POST['image'];
 $students = $_POST['students'];
-$query = "INSERT INTO course (course_name, teacher, start_course_date, course_time, description, picture, students)
-                     VALUES ('$course_name', '$teacher', '$start_course_date', '$course_time', '$description', '$picture', '$students');";
+$query = "INSERT INTO Courses (course_name, teacher, start_course_date, course_time, description, image, students)
+                     VALUES ('$course_name', '$teacher', '$start_course_date', '$course_time', '$description', '$image', '$students');";
 
 if ($conn->query($query) === TRUE) {
-    echo "New record created successfully";
+    header("Location: course_show.php?course_id=" . $conn->insert_id);
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
