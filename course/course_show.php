@@ -76,37 +76,32 @@ $teacher = $conn->query($query)->fetch_assoc();
 
                             <div class="meta-info-unit">
                                 <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
-                                <div class="value">نوع دوره: غیر حضوری</div>
+                                <div class="value">نوع دوره: حضوری و غیر حضوری</div>
                             </div>
 
                             <div class="meta-info-unit">
                                 <div class="icon"><i class="fal fa-book-reader"></i></div>
-                                <div class="value">سطح دوره: فوق حرفه ای</div>
+                                <div class="value">سطح دوره:   </div>
                             </div>
 
                             <div class="meta-info-unit">
                                 <div class="icon"><i class="fal fa-traffic-light-slow"></i></div>
-                                <div class="value">پیش نیاز: HTML CSS</div>
-                            </div>
-
-                            <div class="meta-info-unit">
-                                <div class="icon"><i class="fal fa-globe"></i></div>
-                                <div class="value">زبان: فارسی</div>
+                                <div class="value">پیش نیاز: </div>
                             </div>
 
                             <div class="meta-info-unit">
                                 <div class="icon"><i class="fal fa-clock"></i></div>
-                                <div class="value">4 ساعت و 20 دقیقه</div>
+                                <div class="value">طول دوره: <?php echo $course["course_duration"]; ?> ساعت</div>
                             </div>
 
                             <div class="meta-info-unit">
                                 <div class="icon"><i class="fal fa-list-alt"></i></div>
-                                <div class="value">3 فصل</div>
+                                <div class="value">تاریخ معارفه: <?php echo $course["presentation_date"]; ?></div>
                             </div>
 
                             <div class="meta-info-unit">
                                 <div class="icon"><i class="fal fa-hdd"></i></div>
-                                <div class="value"> 450 مگابایت</div>
+                                <div class="value">تاریخ شروع: <?php echo $course["start_course_date"]; ?></div>
                             </div>
 
                             <div class="meta-info-unit">
@@ -116,7 +111,7 @@ $teacher = $conn->query($query)->fetch_assoc();
 
                             <div class="meta-info-unit">
                                 <div class="icon"><i class="fal fa-file-certificate"></i></div>
-                                <div class="value">گواهی متخصص وردپرس استادیار</div>
+                                <div class="value">گواهی حضور در دوره</div>
                             </div>
 
                         </div>

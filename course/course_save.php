@@ -20,12 +20,12 @@ $course_name = $_POST['course_name'];
 $teacher = $_POST['teacher'];
 $presentation_date = ($_POST['presentation_date']) ? $_POST['presentation_date'] : NULL;
 $start_course_date = $_POST['start_course_date'];
-$course_time = $_POST['course_time'];
+$course_duration = $_POST['course_duration'];
 $description = $_POST['description'];
 $image = $_POST['image'];
 $students = $_POST['students'];
-$query = "INSERT INTO Courses (course_name, teacher, start_course_date, course_time, description, image, students)
-                     VALUES ('$course_name', '$teacher', '$start_course_date', '$course_time', '$description', '$image', '$students');";
+$query = "INSERT INTO Courses (course_name, teacher, start_course_date, course_duration, description, image, students)
+                     VALUES ('$course_name', '$teacher', '$start_course_date', '$course_duration', '$description', '$image', '$students');";
 
 if ($conn->query($query) === TRUE) {
     header("Location: course_show.php?course_id=" . $conn->insert_id);
