@@ -47,11 +47,11 @@
                     <ul class="navigation-menu">
 
                     <li class="has-submenu">
-                            <a href="dashboard.php"><i class="fas fa-users"></i>داشبورد</a>
+                            <a href="../users/admin/dashboard.php"><i class="fas fa-users"></i>داشبورد</a>
                         </li>
 
                         <li class="has-submenu">
-                            <a href="users_show.php"><i class="fas fa-users"></i>کاربران</a>
+                            <a href="../users/admin/users_show.php"><i class="fas fa-users"></i>کاربران</a>
                         </li>
 
                         <li class="has-submenu">

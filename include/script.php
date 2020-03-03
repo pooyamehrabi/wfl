@@ -20,7 +20,9 @@
         <script src="/crm/assets/libs/datatables/dataTables.select.min.js"></script>
         <script src="/crm/assets/libs/pdfmake/pdfmake.min.js"></script>
         <script src="/crm/assets/libs/pdfmake/vfs_fonts.js"></script>
+        <script src="/crm/assets/js/jquery.flipper-responsive.js"></script>
         <!-- third party js ends -->
 
         <!-- App js-->
         <script src="/crm/assets/js/app.min.js"></script>
+
