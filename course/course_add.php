@@ -32,9 +32,9 @@ while ($teacher = $result->fetch_assoc()) {
 
 <body>
 
-<!-- Navigation Bar-->
-<?php require_once "header.php"; ?>
-<!-- End Navigation Bar-->
+    <!-- Navigation Bar-->
+    <?php require_once "header_admin.php"; ?>
+    <!-- End Navigation Bar-->
 
     <div class="wrapper mb-3">
         <form class="form-horizontal" action="course_save.php" method="post" data-parsley-validate>
@@ -85,9 +85,9 @@ while ($teacher = $result->fetch_assoc()) {
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group row">
-                                        <label for="course_time" class="text-right col-sm-4 col-form-label">مجموع ساعات دوره</label>
+                                        <label for="course_duration" class="text-right col-sm-4 col-form-label">مجموع ساعات دوره</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="course_time" class="form-control" id="course_time" placeholder="مجموع ساعات دوره" >
+                                            <input type="text" name="course_duration" class="form-control" id="course_duration" placeholder="مجموع ساعات دوره" >
                                         </div>
                                     </div>
                                 </div>

@@ -4,7 +4,7 @@
         <!-- Topbar Start -->
         <div class="navbar-custom">
             <div class="container-fluid">
-                <ul class="list-unstyled topnav-menu float-right mb-0">
+                <ul class="list-unstyled topnav-menu mb-0">
 
                     <li class="dropdown notification-list">
                         <!-- Mobile menu toggle-->

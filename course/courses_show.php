@@ -30,7 +30,8 @@ if ($result->num_rows > 0) {
         } else {
             $output .= '<div class="countdown-container"><div class="flipper" data-reverse="true" data-datetime="' . $course["start_course_date"] . '" data-template="dd|HH|ii|ss" data-labels="روز|ساعت|دقیقه|ثانیه" id="flipper-' . $course["course_id"] . '"></div></div>';
         }
-        $output .= "</div></div></div>";
+        $output .= '<div class="text-center"><a class="view-course-info" href="course_show.php?course_id=' . $course["course_id"] . '">مشاهده دوره</a></div>';
+        $output .= '</div></div></div>';
     }
     $output .= "</div>";
 }
@@ -53,7 +54,13 @@ if ($result->num_rows > 0) {
     <body>
 
         <!-- Navigation Bar-->
-        <?php require_once "header.php"; ?>
+        <?php 
+        if($_SESSION["type"] == "admin") {
+            require_once "header_admin.php";
+        } else {
+            require_once "header_user.php";
+        }
+        ?>
         <!-- End Navigation Bar-->
 
         <!-- ============================================================== -->

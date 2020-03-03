@@ -91,7 +91,6 @@ $user = $result->fetch_assoc();
                         <div class="bg-picture card-box">
                             <div class="profile-info-name text-center">
                                 <div class="text-center" style="position: relative;">
-                                    <div class="edit-profile-image" style="display:none;position: absolute;right: 50%;transform: translateX(50%);top: 30%;"><i class="fas fa-edit font-20"></i></div>
                                     <img src="<?php echo $profile_image_folder . $user["picture"]; ?>" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">
                                     <h4 class="m-0"><?php echo $user["firstname"] . ' ' . $user["lastname"]; ?></h4>
                                 </div>

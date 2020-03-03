@@ -8,10 +8,14 @@ $query = "SELECT * FROM Courses WHERE course_id='$course_id';";
 $result = $conn->query($query);
 $course = $result->fetch_assoc();
 
+$query = "SELECT * from Users WHERE user_id='". $course["teacher"] ."';";
+$teacher = $conn->query($query)->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,94 +23,120 @@ $course = $result->fetch_assoc();
     <meta content="WFL" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <title>دوره <?php echo $course["course_name"] ; ?></title>
 
     <?php require_once("../include/style.php"); ?>
-    
+
 </head>
 
 <body>
 
-<!-- Navigation Bar-->
-<?php require_once "header.php"; ?>
-<!-- End Navigation Bar-->
+    <!-- Navigation Bar-->
+    <?php 
+    if($_SESSION["type"] == "admin") {
+        require_once "header_admin.php";
+    } else {
+        require_once "header_user.php";
+    }
+    ?>
+    <!-- End Navigation Bar-->
 
     <div class="wrapper mb-3">
-        <form class="form-horizontal" action="course_save.php" method="post" data-parsley-validate>
-            <div class="container mt-3">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="mt-0 mb-3 header-title">مشخصات دوره</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="course_name" class="text-right col-sm-3 col-form-label">نام دوره</label>
-                                        <div class="col-sm-9"><?php echo $course["teacher"] ; ?></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="teacher" class="text-right col-sm-4 col-form-label">مدرس دوره</label>
-                                        <div class="col-sm-8"><?php echo $course["teacher"] ; ?></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="presentation_date" class="col-sm-3 col-form-label text-right">تاریخ معارفه: </label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="presentation_date" class="form-control" id="presentation_date" placeholder="تاریخ معارفه" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="start_course_date" class="col-sm-3 col-form-label text-right">تاریخ شروع دوره</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="start_course_date" class="form-control" id="start_course_date" placeholder="تاریخ شروع دوره" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="course_time" class="text-right col-sm-4 col-form-label">مجموع ساعات دوره</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="course_time" class="form-control" id="course_time" placeholder="مجموع ساعات دوره" >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="mt-0 mb-3 header-title">توضیح دوره</h4>
-                            <div class="row">
-                                <div class="col-12">
-                                    <textarea name="description" class="form-control" id="description"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="container-fluid mt-3">
+            <h4 class="mt-0 mb-3 header-title">نام دوره</h4>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card-box">
-                            <h4 class="header-title mt-0 mb-3">عکس دوره</h4>
-                            <input type="file" name="image" class="dropify" data-max-file-size="2M" >
-                            <span style="font-size: 11px;">حداکثر حجم عکس 5 مگابیات</span>
-                        </div>
-                    </div><!-- end col -->
+            <div class="row">
+                <div class="col-sm-12 col-md-8">
+                    <div class="card-box">
+                        <img style="width:100%;" src="../uploads/courses/course_no_image.png" alt="">
+                    </div>
+                    <div class="card-box">
+                        <div><?php echo $course["description"]; ?></div>
+                    </div>
                 </div>
-            </div> <!-- end container -->
-            <div class="form-group mb-0 justify-content-end row">
-                <div class="col-sm-12 text-center">
-                    <button type="submit" value="submit" class="btn btn-info waves-effect waves-light">ثبت دوره</button>
+                <div class="col-12 col-sm-4">
+                    <div class="product-info-box">
+
+                        <div class="sell_course">
+                            <strong>قیمت :</strong>
+                            <p class="price">1,900,000 تومان</ins></p>
+                        </div>
+
+                        <form class="cart" method="post" enctype="multipart/form-data">
+                            <button type="submit" name="add-to-cart" value="506" class="single_add_to_cart_button button alt">رزرو دوره</button>
+                        </form>
+
+                    </div>
+                    <div class="card-box product-info-box">
+                        <div class="product-meta-info-list">
+
+                            <div class="total_sales">
+                                <i class="fal fa-user-graduate"></i> تعداد دانشجو : <span>25</span>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                                <div class="value">نوع دوره: غیر حضوری</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-book-reader"></i></div>
+                                <div class="value">سطح دوره: فوق حرفه ای</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-traffic-light-slow"></i></div>
+                                <div class="value">پیش نیاز: HTML CSS</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-globe"></i></div>
+                                <div class="value">زبان: فارسی</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-clock"></i></div>
+                                <div class="value">4 ساعت و 20 دقیقه</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-list-alt"></i></div>
+                                <div class="value">3 فصل</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-hdd"></i></div>
+                                <div class="value"> 450 مگابایت</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-user-headset"></i></div>
+                                <div class="value">روش پشتیبانی: ارسال تیکت</div>
+                            </div>
+
+                            <div class="meta-info-unit">
+                                <div class="icon"><i class="fal fa-file-certificate"></i></div>
+                                <div class="value">گواهی متخصص وردپرس استادیار</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="course-teacher-details">
+                        <div class="top-part">
+                            <a href="#"><img class="img-fluid" src="<?php echo $profile_image_folder . $teacher["picture"]; ?>" alt="<?php echo  $teacher["firstname"] . " " . $teacher["lastname"]; ?>"></a>
+                            <div class="name">
+                                <a href="" class="btn-link">
+                                    <h6><?php echo  $teacher["firstname"] . " " . $teacher["lastname"]; ?></h6>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p><?php echo  $teacher["about"]; ?></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div> <!-- end container -->
     </div>
     <!-- end wrapper -->
 
@@ -121,32 +151,33 @@ $course = $result->fetch_assoc();
     <?php require_once "../include/script.php" ; ?>
 
     <script>
-    $( document ).ready(function() {
-        kamaDatepicker('start_course_date');
-        kamaDatepicker('presentation_date');
-        $(".dropify").dropify({
-            messages:{
-                default:"عکس خود را بیندازید اینجا",
-                replace:"برای جایگزینی عکس جدید را روی این عکس بیندازید",
-                remove:"پاک کردن",
-                error:"مشکلی پیش آمد، دوباره تلاش کنید"
-            },
-            error:{
-                fileSize:"حجم فایل شما بیش از میزان مورد قبول است (حداکثر: 5 مگابایت)"
-            }
+        $(document).ready(function () {
+            kamaDatepicker('start_course_date');
+            kamaDatepicker('presentation_date');
+            $(".dropify").dropify({
+                messages: {
+                    default: "عکس خود را بیندازید اینجا",
+                    replace: "برای جایگزینی عکس جدید را روی این عکس بیندازید",
+                    remove: "پاک کردن",
+                    error: "مشکلی پیش آمد، دوباره تلاش کنید"
+                },
+                error: {
+                    fileSize: "حجم فایل شما بیش از میزان مورد قبول است (حداکثر: 5 مگابایت)"
+                }
+            });
+            $('form').parsley();
+            tinymce.init({
+                selector: '#description',
+                directionality: 'rtl',
+                language: 'fa_IR',
+                height: "480",
+                plugins: 'preview searchreplace autolink visualblocks visualchars image link media template codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists imagetools  textpattern ',
+                toolbar1: 'fontselect formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+                font_formats: 'IRANSans=IRANSans;dana=dana;Nazanin=B Nazanin;Times New Roman=times new roman,times;'
+            });
         });
-        $('form').parsley();
-        tinymce.init({
-            selector: '#description',
-            directionality : 'rtl',
-            language: 'fa_IR',
-            height : "480",
-            plugins: 'preview searchreplace autolink visualblocks visualchars image link media template codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists imagetools  textpattern ',
-            toolbar1: 'fontselect formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-            font_formats: 'IRANSans=IRANSans;dana=dana;Nazanin=B Nazanin;Times New Roman=times new roman,times;'
-        });
-    });
     </script>
-            
+
 </body>
+
 </html>
