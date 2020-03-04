@@ -157,34 +157,6 @@ if ($_SESSION["type"] == "admin") {
 
     <?php require_once "../include/script.php";?>
 
-    <script>
-        $(document).ready(function () {
-            kamaDatepicker('start_course_date');
-            kamaDatepicker('presentation_date');
-            $(".dropify").dropify({
-                messages: {
-                    default: "عکس خود را بیندازید اینجا",
-                    replace: "برای جایگزینی عکس جدید را روی این عکس بیندازید",
-                    remove: "پاک کردن",
-                    error: "مشکلی پیش آمد، دوباره تلاش کنید"
-                },
-                error: {
-                    fileSize: "حجم فایل شما بیش از میزان مورد قبول است (حداکثر: 5 مگابایت)"
-                }
-            });
-            $('form').parsley();
-            tinymce.init({
-                selector: '#description',
-                directionality: 'rtl',
-                language: 'fa_IR',
-                height: "480",
-                plugins: 'preview searchreplace autolink visualblocks visualchars image link media template codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists imagetools  textpattern ',
-                toolbar1: 'fontselect formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-                font_formats: 'IRANSans=IRANSans;dana=dana;Nazanin=B Nazanin;Times New Roman=times new roman,times;'
-            });
-        });
-    </script>
-
 </body>
 
 </html>
