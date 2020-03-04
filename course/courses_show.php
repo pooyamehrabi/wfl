@@ -1,6 +1,11 @@
 <?php
 require_once "../config.php";
-require_once "../include/date.php";
+require_once "../include/DateAbstract.php";
+require_once "../include/Date.php";
+require_once "../include/Jalali.php";
+
+use Date\Date;
+use Date\Jalali;
 
 $conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 $query = "SELECT * from Courses;";
@@ -15,6 +20,9 @@ if ($result->num_rows > 0) {
         $course_image = ($course["image"]) ? $course["image"] : "course_no_image.png";
         $query = "SELECT * from Users WHERE user_id='" . $course["teacher"] . "';";
         $teacher = $conn->query($query)->fetch_assoc();
+        $presentation_date = new Date($course["presentation_date"]);
+        $start_course_date = new Date($course["start_course_date"]);
+
         array_push($countdown, $course["course_id"]);
         $output .= '<div class="mb-3 col-md-4 col-sm-6 col-12 d-flex"><div class="card move-up">';
         $output .= '<img class="card-img-top img-fluid" src="' . $course_image_folder . $course_image . '" alt="Card image cap">';
@@ -22,17 +30,16 @@ if ($result->num_rows > 0) {
         $output .= '<div class="teacher-info"><a href="#"><img src="../uploads/courses/placeholder.png" alt=""><span>' . $teacher["firstname"] . " " . $teacher["lastname"] . '</span></a></div>';
         $output .= '<h4 class="card-title mt-2"><a href="course_show.php?course_id=' . $course["course_id"] . '">' . $course["course_name"] . '</a></h4>';
         if ($course["presentation_date"]) {
-            $output .= '<div class="card-text">زمان معارفه: ' . jdate("y/n/j ساعت شروع: H:i", $course["presentation_date"]) . '</div>';
+            $output .= '<div class="card-text">زمان معارفه: ' . $presentation_date->toj()->format("j F Y ساعت شروع: H:i") . '</div>';
         }
 
         if ($course["start_course_date"]) {
-            $output .= '<div class="card-text">شروع دوره: ' . jdate("y/n/j ساعت شروع: H:i", $course["start_course_date"]) . '</div>';
+            $output .= '<div class="card-text">شروع دوره: ' .  $start_course_date->toj()->format("j F Y ساعت شروع: H:i") . '</div>';
         }
 
         $output .= '<div class="mb-5"></div>';
         if ($today < $course["presentation_date"]) {
             $output .= '<div class="countdown-container"><div class="flipper" data-reverse="true" data-datetime="' . $course["presentation_date"] . '" data-template="dd|HH|ii|ss" data-labels="روز|ساعت|دقیقه|ثانیه" id="flipper-' . $course["course_id"] . '"></div></div>';
-            // $output .= '<p class="countdown-container">' . jdate("y/n/j, H:i", $course["presentation_date"]) . ' </p>';
         } else {
             $output .= '<div class="countdown-container"><div class="flipper" data-reverse="true" data-datetime="' . $course["start_course_date"] . '" data-template="dd|HH|ii|ss" data-labels="روز|ساعت|دقیقه|ثانیه" id="flipper-' . $course["course_id"] . '"></div></div>';
         }
