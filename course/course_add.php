@@ -25,6 +25,7 @@ while ($teacher = $result->fetch_assoc()) {
     <meta content="WFL" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <title>افزودن دوره</title>
 
     <?php require_once("../include/style.php"); ?>
     
@@ -37,7 +38,8 @@ while ($teacher = $result->fetch_assoc()) {
     <!-- End Navigation Bar-->
 
     <div class="wrapper mb-3">
-        <form class="form-horizontal" action="course_save.php" method="post" data-parsley-validate>
+        <form class="form-horizontal" action="course_save.php" method="post" enctype="multipart/form-data" data-parsley-validate>
+            <input type="hidden" name="add_course" value="true">
             <div class="container mt-3">
                 <div class="row">
                     <div class="col-12">
@@ -56,7 +58,7 @@ while ($teacher = $result->fetch_assoc()) {
                                     <div class="form-group row">
                                         <label for="teacher" class="text-right col-sm-4 col-form-label">مدرس دوره</label>
                                         <div class="col-sm-8">
-                                            <select type="text" class="form-control" id="teacher" required>
+                                            <select type="text" name="teacher" class="form-control" id="teacher" required>
                                                 <option value=""></option>
                                                 <?php
                                                 foreach ($teachers as $teacher ) {
@@ -139,8 +141,21 @@ while ($teacher = $result->fetch_assoc()) {
 
     <script>
     $( document ).ready(function() {
-        kamaDatepicker('start_course_date');
-        kamaDatepicker('presentation_date');
+        $('#presentation_date').MdPersianDateTimePicker({
+            targetTextSelector: '#presentation_date',
+            targetDateSelector: '#presentation_date',
+            dateFormat: 'yyyy/MM/dd HH:mm',
+            isGregorian: false,
+            enableTimePicker: true,
+        });
+        $('#start_course_date').MdPersianDateTimePicker({
+            targetTextSelector: '#start_course_date',
+            targetDateSelector: '#start_course_date',
+            dateFormat: 'yyyy/MM/dd HH:mm',
+            isGregorian: false,
+            enableTimePicker: true,
+        });
+
         $(".dropify").dropify({
             messages:{
                 default:"عکس خود را بیندازید اینجا",

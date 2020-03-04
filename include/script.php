@@ -2,7 +2,7 @@
         <!-- Vendor js -->
         <script src="/crm/assets/js/vendor.min.js"></script>
         <script src="/crm/assets/js/dropify.min.js"></script>
-        <script src="/crm/assets/js/kamadatepicker.min.js"></script>
+        <script src="/crm/assets/js/jquery.md.bootstrap.datetimepicker.js"></script>
         <script src="/crm/assets/js/parsley.min.js"></script>
         <script src="/crm/assets/js/i18n/fa.js"></script>
         <script src="/crm/assets/js/sticky-sidebar.min.js"></script>
