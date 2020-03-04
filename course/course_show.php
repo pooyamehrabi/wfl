@@ -48,7 +48,7 @@ $teacher = $conn->query($query)->fetch_assoc();
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                     <div class="card-box">
-                        <img style="width:100%;" src="../uploads/courses/course_no_image.png" alt="">
+                        <img style="width:100%;" src="<?php echo $course_image_folder . $course["image"]; ?>" alt="">
                     </div>
                     <div class="card-box">
                         <div><?php echo $course["description"]; ?></div>
