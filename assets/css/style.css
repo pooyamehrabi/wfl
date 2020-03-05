@@ -79,6 +79,7 @@
 }
 
 /* Courses */
+
 .profile-info-name:hover .edit-profile-image {
     display: block !important;
 }
@@ -91,12 +92,13 @@
     background: white;
     border: 1px solid #84848482;
     border-radius: 25px;
-    padding: 3px 10px;
+    padding: 3px 3px 3px 10px;
 }
 
 .teacher-info img {
-    width: auto;
-    height: 100%;
+    width: 42px;
+    height: 42px;
+    border-radius: 25px;
 }
 
 .teacher-info span {

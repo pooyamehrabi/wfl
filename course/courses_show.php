@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
         $output .= '<div class="mb-3 col-md-4 col-sm-6 col-12 d-flex"><div class="card move-up">';
         $output .= '<img class="card-img-top img-fluid" src="' . $course_image_folder . $course_image . '" alt="Card image cap">';
         $output .= '<div class="card-body">';
-        $output .= '<div class="teacher-info"><a href="#"><img src="../uploads/courses/placeholder.png" alt=""><span>' . $teacher["firstname"] . " " . $teacher["lastname"] . '</span></a></div>';
+        $output .= '<div class="teacher-info"><a href="#"><img src="'. $profile_image_folder . $teacher["picture"] .'" alt=""><span>' . $teacher["firstname"] . " " . $teacher["lastname"] . '</span></a></div>';
         $output .= '<h4 class="card-title mt-2"><a href="course_show.php?course_id=' . $course["course_id"] . '">' . $course["course_name"] . '</a></h4>';
         if ($course["presentation_date"]) {
             $output .= '<div class="card-text">زمان معارفه: ' . $presentation_date->toj()->format("j F Y ساعت شروع: H:i") . '</div>';
@@ -80,7 +80,7 @@ if ($_SESSION["type"] == "admin") {
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
 
-        <div class="wrapper">
+        <div id="courses" class="wrapper">
             <div class="container-fluid">
 
                 <!-- start page title -->

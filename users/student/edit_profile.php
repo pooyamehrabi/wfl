@@ -1,7 +1,8 @@
 <?php
-require_once("../../config.php");
-$conn = new mysqli($db_server, $db_username, $db_password, $db_database);
+require_once "../../config.php";
+require_once "../../check_permission.php";
 
+$conn = new mysqli($db_server, $db_username, $db_password, $db_database);
 $user_id = $_SESSION["user_id"];
 if (isset($_REQUEST["edit_user"]) && $_REQUEST["edit_user"]) {
 
@@ -35,13 +36,22 @@ if (isset($_REQUEST["edit_user"]) && $_REQUEST["edit_user"]) {
     $experience = $_POST['experience'];
     $study_field = $_POST['study_field'];
     $about = $_POST['about'];
-    $query = "UPDATE Users SET 
-                firstname='$firstname', lastname='$lastname', birthday='$birthday', mobile='$mobile', phone='$phone', 
-                email='$email', family_phone='$family_phone', address='$address', study_field='$study_field', 
+    $query = "UPDATE Users SET
+                firstname='$firstname', lastname='$lastname', birthday='$birthday', mobile='$mobile', phone='$phone',
+                email='$email', family_phone='$family_phone', address='$address', study_field='$study_field',
                 job_title='$job_title', experience='$experience' ";
-    if($about)         $query .= ", about='$about' ";
-    if($picture)       $query .= ", picture='$picture' ";
-    if($national_card) $query .= ", national_card='$national_card' ";
+    if ($about) {
+        $query .= ", about='$about' ";
+    }
+
+    if ($picture) {
+        $query .= ", picture='$picture' ";
+    }
+
+    if ($national_card) {
+        $query .= ", national_card='$national_card' ";
+    }
+
     $query .= "WHERE user_id='{$user_id}';";
     $conn->query($query);
 }
@@ -63,13 +73,13 @@ $user = $result->fetch_assoc();
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <title>پروفایل - <?php echo $user["firstname"] . " " . $user["lastname"] ?></title>
 
-    <?php require_once("../../include/style.php"); ?>
-    
+    <?php require_once "../../include/style.php";?>
+
 </head>
 
 <body>
 
-    <?php include_once "header.php"; ?>
+    <?php include_once "header.php";?>
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
@@ -83,7 +93,7 @@ $user = $result->fetch_assoc();
                 <div class="col-12">
                     <h4 class="page-title my-3">ویرایش پروفایل</h4>
                 </div>
-            </div>     
+            </div>
 
             <div class="row main-content">
                 <div class="col-12 col-sm-3 sidebar">
@@ -109,7 +119,7 @@ $user = $result->fetch_assoc();
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام:</strong></div> <div class="col-7"><input class="form-control" name="firstname" type="text" value="<?php echo $user["firstname"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>نام خانوادگی:</strong></div> <div class="col-7"><input class="form-control" name="lastname" type="text" value="<?php echo $user["lastname"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تاریخ تولد:</strong></div> <div class="col-7"><input class="form-control" name="birthday" type="text" value="<?php echo $user["birthday"]; ?>"></div></div>
-                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>وضعیت تاهل:</strong></div> 
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>وضعیت تاهل:</strong></div>
                                 <div class="col-7">
                                     <select name="type" class="form-control">
                                         <option <?php echo ($user["civil_status"] == "single") ? "selected" : ""; ?> value="Single">مجرد</option>
@@ -137,7 +147,7 @@ $user = $result->fetch_assoc();
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>شغل:</strong></div> <div class="col-7"><input class="form-control" name="job_title" type="text" value="<?php echo $user["job_title"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>تجربه تخصص:</strong></div> <div class="col-7"><input class="form-control" name="experience" type="text" value="<?php echo $user["experience"]; ?>"></div></div>
                             <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"></div></div>
-                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>معرف:</strong></div> 
+                            <div class="col-12 col-sm-6 my-2 row"><div class="col-5 text-right pt-1"><strong>معرف:</strong></div>
                                 <div class="col-7">
                                     <select name="type" id="referee" class="form-control" onchange="setRefereeVisibility(this)">
                                         <option <?php echo ($user["refree"] == "telegram") ? "selected" : ""; ?> value="telegram">تلگرام</option>
@@ -185,7 +195,7 @@ $user = $result->fetch_assoc();
     </footer>
     <!-- end Footer -->
 
-    <?php include_once "../../include/script.php" ; ?>
+    <?php include_once "../../include/script.php";?>
     <script type="text/javascript">
     function setRefereeVisibility() {
         var refree_tye = $('#referee').find(":selected").val();
