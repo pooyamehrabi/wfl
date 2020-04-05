@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="has-submenu">
-                            <a href="tickets_show.php"><i class="fas fa-users"></i>تیکت</a>
+                            <a href="../users/admin/tickets_show.php"><i class="fas fa-users"></i>تیکت</a>
                         </li>
 
                     </ul>

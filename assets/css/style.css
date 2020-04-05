@@ -705,3 +705,28 @@ unit .icon,
 .flipper-dark-labels .flipper-group label {
     color: #333;
 }
+
+#users-table_length {
+    display: inline-block;
+}
+
+#users-table_wrapper .row > div {
+    text-align: right
+}
+
+.dt-buttons.btn-group {
+    float: left;
+}
+
+.table.dt-responsive.nowrap.dataTable thead input {
+    overflow: visible;
+    border-radius: 5px;
+    border: 1px solid #6c757d;
+    padding: 5px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.select-info {
+    margin-right: 10px;
+}

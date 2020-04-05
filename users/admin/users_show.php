@@ -8,29 +8,6 @@ $result = $conn->query($query);
 $output = '' ;
 
 if ($result->num_rows > 0) {
-    $output  = '<table id="datatable" class="table table-bordered dt-responsive nowrap"><thead>';
-    $output .= "<th>کد ملی</th>";
-    $output .= "<th>نوع کاربر</th>";
-    $output .= "<th>نام</th>";
-    $output .= "<th> نام خانوادگی</th>";
-    $output .= "<th>تاریخ تولد</th>";
-    $output .= "<th>وضعیت تاهل</th>";
-    $output .= "<th>موبایل</th>";
-    $output .= "<th>تلفن</th>";
-    $output .= "<th>ایمیل</th>";
-    $output .= "<th>تماس اضطراری</th>";
-    $output .= "<th>آدرس</th>";
-    $output .= "<th>مدرک</th>";
-    $output .= "<th>رشته تحصیلی</th>";
-    $output .= "<th>شغل</th>";
-    $output .= "<th>تجربه تخصص</th>";
-    $output .= "<th>درباره خود</th>";
-    $output .= "<th>معرف</th>";
-    $output .= "<th>نام معرف</th>";
-    $output .= "<th>عکس</th>";
-    $output .= "<th>عکس کارت ملی</th>";
-    $output .= "<th>ویرایش</th>";
-    $output .= "</thead>";
     while($row = $result->fetch_assoc()){
         $output .= "<tr>";
         $output .= "<td>" . $row["NID"] . "</td>";
@@ -56,7 +33,6 @@ if ($result->num_rows > 0) {
         $output .= "<td class='text-center'><a href='user_edit.php?user_id=" . $row["user_id"] . "'><i class='fas fa-edit'></i></a></td>";
         $output .= "</tr>";
     }
-    $output .= "</table>";
 }
 ?>
 
@@ -87,7 +63,60 @@ if ($result->num_rows > 0) {
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <?php echo $output; ?>
+                        <table id="users-table" class="table table-bordered dt-responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th>کد ملی</th>
+                                    <th>نوع کاربر</th>
+                                    <th>نام</th>
+                                    <th> نام خانوادگی</th>
+                                    <th>تاریخ تولد</th>
+                                    <th>وضعیت تاهل</th>
+                                    <th>موبایل</th>
+                                    <th>تلفن</th>
+                                    <th>ایمیل</th>
+                                    <th>تماس اضطراری</th>
+                                    <th>آدرس</th>
+                                    <th>مدرک</th>
+                                    <th>رشته تحصیلی</th>
+                                    <th>شغل</th>
+                                    <th>تجربه تخصص</th>
+                                    <th>درباره خود</th>
+                                    <th>معرف</th>
+                                    <th>نام معرف</th>
+                                    <th>عکس</th>
+                                    <th>عکس کارت ملی</th>
+                                    <th>ویرایش</th>
+                                </tr>
+                                <tr>
+                                    <td>کد ملی</td>
+                                    <td>نوع کاربر</td>
+                                    <td>نام</td>
+                                    <td> نام خانوادگی</td>
+                                    <td>تاریخ تولد</td>
+                                    <td>وضعیت تاهل</td>
+                                    <td>موبایل</td>
+                                    <td>تلفن</td>
+                                    <td>ایمیل</td>
+                                    <td>تماس اضطراری</td>
+                                    <td>آدرس</td>
+                                    <td>مدرک</td>
+                                    <td>رشته تحصیلی</td>
+                                    <td>شغل</td>
+                                    <td>تجربه تخصص</td>
+                                    <td>درباره خود</td>
+                                    <td>معرف</td>
+                                    <td>نام معرف</td>
+                                    <td>عکس</td>
+                                    <td>عکس کارت ملی</td>
+                                    <td>ویرایش</td>
+                                </tr>
+                            </thead>
+
+                            <?php echo $output; ?>
+                            
+                        </table>
+
                     </div>
                 </div>
             </div> <!-- end row -->
@@ -121,8 +150,11 @@ if ($result->num_rows > 0) {
     <?php include_once "../../include/script.php" ; ?>
     <script>
     $(document).ready(function () {
-        $("#datatable").DataTable({
+        var table = $("#users-table").DataTable({
             "scrollX": true,
+            buttons: [  {extend: 'csv'   , className: 'btn-light', text: 'خروجی CSV', exportOptions: { columns: ':visible' }, title: 'Users'},
+                        {extend: 'excel' , className: 'btn-light', text: 'خروجی اکسل', exportOptions: { columns: ':visible' }, title: 'Users' },
+                        {extend: 'colvis', className: 'btn-light', text: 'نمایش ستون'}],
             language: {
                 "sEmptyTable":     "هیچ داده‌ای در جدول وجود ندارد",
                 "sInfo":           "نمایش _START_ تا _END_ از _TOTAL_ ردیف",
@@ -148,6 +180,32 @@ if ($result->num_rows > 0) {
             }
 
         });
+
+        table.buttons().container().appendTo("#users-table_wrapper .col-md-6:eq(0)")
+
+        $('#users-table tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+
+        $('#users-table_wrapper .dataTables_scrollHead thead th').each( function (i) {
+            var title = $(this).text();
+            $(this).html( '<input type="text" placeholder="" />' );
+            var that = this;
+            $( 'input', this ).on( 'keyup change clear', function () {
+                if ( table.column(i).search() !== this.value ) {
+                    table
+                        .column(i)
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+        } );
+
     });
     </script>
     

@@ -16,10 +16,12 @@
         <script src="/crm/assets/libs/datatables/buttons.html5.min.js"></script>
         <script src="/crm/assets/libs/datatables/buttons.flash.min.js"></script>
         <script src="/crm/assets/libs/datatables/buttons.print.min.js"></script>
+        <script src="/crm/assets/libs/datatables/buttons.colVis.min.js"></script>
         <script src="/crm/assets/libs/datatables/dataTables.keyTable.min.js"></script>
         <script src="/crm/assets/libs/datatables/dataTables.select.min.js"></script>
-        <script src="/crm/assets/libs/pdfmake/pdfmake.min.js"></script>
-        <script src="/crm/assets/libs/pdfmake/vfs_fonts.js"></script>
+        <script src="/crm/assets/libs/datatables/jszip.min.js"></script>
+        <script src="/crm/assets/libs/datatables/pdfmake.min.js"></script>
+        <script src="/crm/assets/libs/datatables/vfs_fonts.js"></script>
         <script src="/crm/assets/js/jquery.flipper-responsive.js"></script>
         <!-- third party js ends -->
 
