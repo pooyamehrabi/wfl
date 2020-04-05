@@ -53,7 +53,7 @@ body {
   margin-top: 70px; }
 
 .left-side-menu {
-  width: 240px;
+  width: 260px;
   background: #ffffff;
   bottom: 0;
   padding: 20px 0;
@@ -371,7 +371,7 @@ body.enlarged {
 
 .logo-box {
   height: 70px;
-  width: 240px;
+  width: 260px;
   float: left;
   background-color: #ffffff; }
 
@@ -3904,6 +3904,7 @@ body {
 
 .dropdown-menu.show {
   text-align: right;
+  background-color: #ebeff2;
   left: auto;
   right: 0;
   bottom: auto; }
@@ -6154,6 +6155,14 @@ a.text-blue:hover, a.text-blue:focus {
 .toggle-right-bar {
     position: absolute;
     top: 22px;
-    right: 200px;
+    right: 224px;
     font-size: 25px;
+}
+
+#side-menu .sub-menu {
+  background-color: rgb(247, 247, 247);
+  width: 88%;
+  margin-right: 10%;
+  border-radius: 10px;
+  font-size: 12px;
 }
